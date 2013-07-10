@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<are:Ares_odpovedi xmlns:are="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3" xmlns:D="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_datatypes/v_1.0.3" xmlns:U="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/uvis_datatypes/v_1.0.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" odpoved_datum_cas="2013-07-10T18:54:46" odpoved_pocet="1" odpoved_typ="Basic" vystup_format="XML" xslt="klient" validation_XSLT="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_odpovedi.xsl" xsi:schemaLocation="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3 http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3/ares_answer_basic_v_1.0.3.xsd" Id="ares">
+  <are:Odpoved>
+    <D:PID>0</D:PID>
+    <D:VH>
+      <D:K>1</D:K>
+    </D:VH>
+    <D:PZA>1</D:PZA>
+    <D:UVOD>
+      <D:ND>Výpis z dat Registru ARES - aktuální stav ke dni 2013-07-10</D:ND>
+      <D:ADB>2013-07-10</D:ADB>
+      <D:DVY>2013-07-10</D:DVY>
+      <D:CAS>18:54:50</D:CAS>
+      <D:Typ_odkazu>0</D:Typ_odkazu>
+    </D:UVOD>
+    <D:VBAS>
+      <D:ICO zdroj="RES">65993390</D:ICO>
+      <D:DIC zdroj="DPH">CZ65993390</D:DIC>
+      <D:OF zdroj="RES">Ředitelství silnic a dálnic ČR</D:OF>
+      <D:DV>1997-01-01</D:DV>
+      <D:PF zdroj="RES">
+        <D:KPF>331</D:KPF>
+        <D:NPF>Příspěvková organizace</D:NPF>
+      </D:PF>
+      <D:AD zdroj="ARES">
+        <D:UC>Na Pankráci 546</D:UC>
+        <D:PB>14000 Praha</D:PB>
+      </D:AD>
+      <D:AA zdroj="ARES">
+        <D:IDA>305316533</D:IDA>
+        <D:KS>203</D:KS>
+        <D:NS>Česká republika</D:NS>
+        <D:NOK>Hlavní město Praha</D:NOK>
+        <D:N>Praha</D:N>
+        <D:NCO>Nusle</D:NCO>
+        <D:NMC>Praha 4</D:NMC>
+        <D:NU>Na Pankráci</D:NU>
+        <D:CD>546</D:CD>
+        <D:TCD>1</D:TCD>
+        <D:CO>56</D:CO>
+        <D:PSC>14000</D:PSC>
+        <D:AU>
+          <U:KOL>19</U:KOL>
+          <U:KK>19</U:KK>
+          <U:KOK>3100</U:KOK>
+          <U:KO>554782</U:KO>
+          <U:KPO>43</U:KPO>
+          <U:KSO>43</U:KSO>
+          <U:KCO>490156</U:KCO>
+          <U:KMC>500119</U:KMC>
+          <U:PSC>14000</U:PSC>
+          <U:KUL>458651</U:KUL>
+          <U:CD>546</U:CD>
+          <U:TCD>1</U:TCD>
+          <U:CO>56</U:CO>
+          <U:KA>22700480</U:KA>
+          <U:KOB>21779104</U:KOB>
+          <U:PCD>2471098</U:PCD>
+        </D:AU>
+      </D:AA>
+      <D:PSU>NNAANANNNNAANNNNNNNNPNNNNNNNNN</D:PSU>
+      <D:RRZ>
+        <D:ZU>
+          <D:KZU>310004</D:KZU>
+          <D:NZU>Úřad městské části Praha 4</D:NZU>
+        </D:ZU>
+        <D:FU>
+          <D:KFU>4</D:KFU>
+          <D:NFU>Praha 4</D:NFU>
+        </D:FU>
+      </D:RRZ>
+      <D:KPP zdroj="RES">1500 - 1999 zaměstnanců</D:KPP>
+      <D:Nace>
+        <D:NACE zdroj="RES">52210</D:NACE>
+      </D:Nace>
+      <D:PPI>
+        <D:PP zdroj="RZP">
+          <D:T>Výroba, obchod a služby neuvedené v přílohách 1 až 3 živnostenského zákona</D:T>
+          <D:T>Silniční motorová doprava - nákladní provozovaná vozidly nebo jízdními soupravami o největší povolené hmotnosti nepřesahující 3,5 tuny, jsou-li určeny k přepravě zvířat nebo věcí</D:T>
+          <D:T>Provádění staveb, jejich změn a odstraňování</D:T>
+        </D:PP>
+      </D:PPI>
+      <D:Obory_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01055</D:K>
+          <D:T>Ubytovací služby</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01058</D:K>
+          <D:T>Realitní činnost, správa a údržba nemovitostí</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01059</D:K>
+          <D:T>Pronájem a půjčování věcí movitých</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01060</D:K>
+          <D:T>Poradenská a konzultační činnost, zpracování odborných studií a posudků</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01065</D:K>
+          <D:T>Testování, měření, analýzy a kontroly</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01070</D:K>
+          <D:T>Služby v oblasti administrativní správy a služby organizačně hospodářské povahy</D:T>
+        </D:Obor_cinnosti>
+      </D:Obory_cinnosti>
+    </D:VBAS>
+  </are:Odpoved>
+</are:Ares_odpovedi>

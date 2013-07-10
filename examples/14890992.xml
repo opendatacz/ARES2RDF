@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<are:Ares_odpovedi xmlns:are="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3" xmlns:D="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_datatypes/v_1.0.3" xmlns:U="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/uvis_datatypes/v_1.0.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" odpoved_datum_cas="2013-07-10T18:58:02" odpoved_pocet="1" odpoved_typ="Basic" vystup_format="XML" xslt="klient" validation_XSLT="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_odpovedi.xsl" xsi:schemaLocation="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3 http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3/ares_answer_basic_v_1.0.3.xsd" Id="ares">
+  <are:Odpoved>
+    <D:PID>0</D:PID>
+    <D:VH>
+      <D:K>1</D:K>
+    </D:VH>
+    <D:PZA>1</D:PZA>
+    <D:UVOD>
+      <D:ND>Výpis z dat Registru ARES - aktuální stav ke dni 2013-07-10</D:ND>
+      <D:ADB>2013-07-10</D:ADB>
+      <D:DVY>2013-07-10</D:DVY>
+      <D:CAS>18:58:05</D:CAS>
+      <D:Typ_odkazu>0</D:Typ_odkazu>
+    </D:UVOD>
+    <D:VBAS>
+      <D:ICO zdroj="OR">14890992</D:ICO>
+      <D:DIC zdroj="DPH">CZ14890992</D:DIC>
+      <D:OF zdroj="OR">IBM Česká republika, spol. s r.o.</D:OF>
+      <D:DV>1990-12-20</D:DV>
+      <D:PF zdroj="OR">
+        <D:KPF>112</D:KPF>
+        <D:NPF>Společnost s ručením omezeným</D:NPF>
+      </D:PF>
+      <D:AD zdroj="ARES">
+        <D:UC>V parku 2294</D:UC>
+        <D:PB>14800 Praha</D:PB>
+      </D:AD>
+      <D:AA zdroj="ARES">
+        <D:IDA>203080573</D:IDA>
+        <D:KS>203</D:KS>
+        <D:NS>Česká republika</D:NS>
+        <D:N>Praha</D:N>
+        <D:NCO>Chodov</D:NCO>
+        <D:NMC>Praha 11</D:NMC>
+        <D:NU>V parku</D:NU>
+        <D:CD>2294</D:CD>
+        <D:TCD>1</D:TCD>
+        <D:CO>4</D:CO>
+        <D:PSC>14800</D:PSC>
+        <D:AU>
+          <U:KOL>19</U:KOL>
+          <U:KK>19</U:KK>
+          <U:KOK>3100</U:KOK>
+          <U:KO>554782</U:KO>
+          <U:KPO>43</U:KPO>
+          <U:KSO>116</U:KSO>
+          <U:KCO>400211</U:KCO>
+          <U:KMC>547034</U:KMC>
+          <U:PSC>14800</U:PSC>
+          <U:KUL>721719</U:KUL>
+          <U:CD>2294</U:CD>
+          <U:TCD>1</U:TCD>
+          <U:CO>4</U:CO>
+          <U:KA>25714023</U:KA>
+          <U:KOB>25226509</U:KOB>
+        </D:AU>
+      </D:AA>
+      <D:PSU>NAAANANNNNNNNNNNNNNNNNNNANNNNN</D:PSU>
+      <D:ROR>
+        <D:SZ>
+          <D:SD>
+            <D:K>1</D:K>
+            <D:T>Městský soud v Praze</D:T>
+          </D:SD>
+          <D:OV>C 692</D:OV>
+        </D:SZ>
+        <D:SOR>
+          <D:SSU>Aktivní</D:SSU>
+          <D:KKZ>
+            <D:K>0</D:K>
+          </D:KKZ>
+          <D:VY>
+            <D:K>0</D:K>
+          </D:VY>
+          <D:ZAM>
+            <D:K>0</D:K>
+          </D:ZAM>
+          <D:LI>
+            <D:K>0</D:K>
+          </D:LI>
+        </D:SOR>
+      </D:ROR>
+      <D:RRZ>
+        <D:ZU>
+          <D:KZU>310011</D:KZU>
+          <D:NZU>Úřad městské části Praha 11</D:NZU>
+        </D:ZU>
+        <D:FU>
+          <D:KFU>11</D:KFU>
+          <D:NFU>Praha-Jižní Město</D:NFU>
+        </D:FU>
+      </D:RRZ>
+      <D:KPP zdroj="RES">500 - 999 zaměstnanců</D:KPP>
+      <D:Nace>
+        <D:NACE zdroj="RES">62020</D:NACE>
+        <D:NACE zdroj="RES">33200</D:NACE>
+        <D:NACE zdroj="RES">471</D:NACE>
+        <D:NACE zdroj="RES">61</D:NACE>
+        <D:NACE zdroj="RES">620</D:NACE>
+        <D:NACE zdroj="RES">69200</D:NACE>
+        <D:NACE zdroj="RES">702</D:NACE>
+        <D:NACE zdroj="RES">711</D:NACE>
+        <D:NACE zdroj="RES">74</D:NACE>
+        <D:NACE zdroj="RES">78</D:NACE>
+        <D:NACE zdroj="RES">80</D:NACE>
+      </D:Nace>
+      <D:PPI>
+        <D:PP zdroj="OR">
+          <D:T>
+projektová činnost ve výstavbě
+</D:T>
+          <D:T>
+Na základě osvědčení vydaného Českým telekomunikačním úřadem společnost
+vykonává následující komunikační činnost dle zákona č. 127/2005 Sb.,
+o elektronických komunikacích a o změně některých souvisejících zákonů, která
+je podnikáním v elektronických komunikacích:
+Poskytování služeb elektronických komunikací:
+- ostatní hlasové služby
+- služby přenosu dat
+- služby přístupu k síti internet
+</D:T>
+          <D:T>
+výroba, obchod a služby neuvedené v přílohách 1 až 3 živnostenského zákona
+</D:T>
+          <D:T>
+montáž, opravy, revize a zkoušky elektrických zařízení
+</D:T>
+          <D:T>
+poskytování technických služeb k ochraně majetku a osob
+</D:T>
+          <D:T>
+výroba, instalace, opravy elektrických strojů a přístrojů, elektronických
+a telekomunikačních zařízení
+</D:T>
+          <D:T>
+provádění staveb, jejich změn a odstraňování
+</D:T>
+          <D:T>
+činnost účetních poradců,vedení účetnictví,vedení daňové evidence
+</D:T>
+          <D:T>
+zprostředkování zaměstnání českých občanů na území České republiky a států EU
+a občanů EU na území České republiky
+</D:T>
+          <D:T>
+zprostředkování zaměstnání českých občanů do zahraničí mimo států EU
+</D:T>
+        </D:PP>
+        <D:PP zdroj="RZP">
+          <D:T>Výroba, instalace, opravy elektrických strojů a přístrojů, elektronických a telekomunikačních zařízení</D:T>
+          <D:T>Montáž, opravy, revize a zkoušky elektrických zařízení</D:T>
+          <D:T>Poskytování technických služeb k ochraně majetku a osob</D:T>
+          <D:T>Činnost účetních poradců, vedení účetnictví, vedení daňové evidence</D:T>
+          <D:T>Výroba, obchod a služby neuvedené v přílohách 1 až 3 živnostenského zákona</D:T>
+        </D:PP>
+      </D:PPI>
+      <D:Obory_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01014</D:K>
+          <D:T>Vydavatelské činnosti, polygrafická výroba, knihařské a kopírovací práce</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01029</D:K>
+          <D:T>Výroba elektronických součástek, elektrických zařízení a výroba a opravy elektrických strojů, přístrojů a elektronických zařízení pracujících na malém napětí</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01044</D:K>
+          <D:T>Nakládání s odpady (vyjma nebezpečných)</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01047</D:K>
+          <D:T>Zprostředkování obchodu a služeb</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01048</D:K>
+          <D:T>Velkoobchod a maloobchod</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01052</D:K>
+          <D:T>Skladování, balení zboží, manipulace s nákladem a technické činnosti v dopravě</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01053</D:K>
+          <D:T>Zasilatelství a zastupování v celním řízení</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01056</D:K>
+          <D:T>Poskytování software, poradenství v oblasti informačních technologií, zpracování dat, hostingové a související činnosti a webové portály</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01058</D:K>
+          <D:T>Realitní činnost, správa a údržba nemovitostí</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01059</D:K>
+          <D:T>Pronájem a půjčování věcí movitých</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01060</D:K>
+          <D:T>Poradenská a konzultační činnost, zpracování odborných studií a posudků</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01063</D:K>
+          <D:T>Projektování elektrických zařízení</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01064</D:K>
+          <D:T>Výzkum a vývoj v oblasti přírodních a technických věd nebo společenských věd</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01065</D:K>
+          <D:T>Testování, měření, analýzy a kontroly</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01066</D:K>
+          <D:T>Reklamní činnost, marketing, mediální zastoupení</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01069</D:K>
+          <D:T>Překladatelská a tlumočnická činnost</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01070</D:K>
+          <D:T>Služby v oblasti administrativní správy a služby organizačně hospodářské povahy</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01072</D:K>
+          <D:T>Mimoškolní výchova a vzdělávání, pořádání kurzů, školení, včetně lektorské činnosti</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01073</D:K>
+          <D:T>Provozování kulturních, kulturně-vzdělávacích a zábavních zařízení, pořádání kulturních produkcí, zábav, výstav, veletrhů, přehlídek, prodejních a obdobných akcí</D:T>
+        </D:Obor_cinnosti>
+        <D:Obor_cinnosti>
+          <D:K>Z01076</D:K>
+          <D:T>Poskytování technických služeb</D:T>
+        </D:Obor_cinnosti>
+      </D:Obory_cinnosti>
+    </D:VBAS>
+  </are:Odpoved>
+</are:Ares_odpovedi>
