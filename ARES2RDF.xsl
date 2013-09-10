@@ -294,7 +294,7 @@
     
     <xsl:template mode="linked" match="D:PB[parent::D:AD]">
         <!-- PSČ a obec -->
-        <xsl:analyze-string select="." regex="(\d{5})\s+(\w{1,54})">
+        <xsl:analyze-string select="." regex="(\d{{5}})\s+(\w{{1,54}})">
             <xsl:matching-substring>
                 <schema:postalCode><xsl:value-of select="regex-group(1)"/></schema:postalCode>
                 <schema:addressLocality><xsl:value-of select="regex-group(2)"/></schema:addressLocality>
