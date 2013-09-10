@@ -26,7 +26,7 @@
     <xsl:param name="namespace">http://linked.opendata.cz/resource/</xsl:param>
     <xsl:variable name="baseURI" select="concat($namespace, 'wwwinfo.mfcr.cz/ares/')"/>
     
-    <xsl:output encoding="UTF-8" indent="yes" method="xml"/>
+    <xsl:output encoding="UTF-8" indent="yes" method="xml" normalization-form="NFC"/>
     
     <xsl:function name="f:classURI" as="xs:anyURI">
         <xsl:param name="classLabel" as="xs:string"/>
