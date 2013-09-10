@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<are:ares_odpovedi xmlns:are="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3" xmlns:d="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_datatypes/v_1.0.3" xmlns:u="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/uvis_datatypes/v_1.0.3" odpoved_datum_cas="2013-08-24T00:12:17" odpoved_pocet="1" odpoved_typ="Basic" vystup_format="XML" xslt="klient" validation_xslt="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_odpovedi.xsl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3 http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3/ares_answer_basic_v_1.0.3.xsd" id="ares"> 
+ <are:odpoved> 
+  <d:pid>
+   0
+  </d:pid> 
+  <d:vh> 
+   <d:k>
+    1
+   </d:k> 
+  </d:vh> 
+  <d:pza>
+   1
+  </d:pza> 
+  <d:uvod> 
+   <d:nd>
+    V&yacute;pis z dat Registru ARES - aktu&aacute;ln&iacute; stav ke dni 2013-08-23
+   </d:nd> 
+   <d:adb>
+    2013-08-23
+   </d:adb> 
+   <d:dvy>
+    2013-08-24
+   </d:dvy> 
+   <d:cas>
+    00:12:19
+   </d:cas> 
+   <d:typ_odkazu>
+    0
+   </d:typ_odkazu> 
+  </d:uvod> 
+  <d:vbas> 
+   <d:ico zdroj="OR">
+    24805726
+   </d:ico> 
+   <d:dic zdroj="DPH">
+    CZ24805726
+   </d:dic> 
+   <d:of zdroj="OR">
+    EKOROL ALFA s.r.o.
+   </d:of> 
+   <d:dv>
+    2011-02-11
+   </d:dv> 
+   <d:pf zdroj="OR"> 
+    <d:kpf>
+     112
+    </d:kpf> 
+    <d:npf>
+     Společnost s ručen&iacute;m omezen&yacute;m
+    </d:npf> 
+   </d:pf> 
+   <d:ad zdroj="ARES"> 
+    <d:uc>
+     Podolsk&aacute; 103
+    </d:uc> 
+    <d:pb>
+     14700 Praha
+    </d:pb> 
+   </d:ad> 
+   <d:aa zdroj="ARES"> 
+    <d:ida>
+     202990463
+    </d:ida> 
+    <d:ks>
+     203
+    </d:ks> 
+    <d:ns>
+     Česk&aacute; republika
+    </d:ns> 
+    <d:n>
+     Praha
+    </d:n> 
+    <d:nco>
+     Podol&iacute;
+    </d:nco> 
+    <d:nmc>
+     Praha 4
+    </d:nmc> 
+    <d:nu>
+     Podolsk&aacute;
+    </d:nu> 
+    <d:cd>
+     103
+    </d:cd> 
+    <d:tcd>
+     1
+    </d:tcd> 
+    <d:co>
+     126
+    </d:co> 
+    <d:psc>
+     14700
+    </d:psc> 
+    <d:au> 
+     <u:kol>
+      19
+     </u:kol> 
+     <u:kk>
+      19
+     </u:kk> 
+     <u:kok>
+      3100
+     </u:kok> 
+     <u:ko>
+      554782
+     </u:ko> 
+     <u:kpo>
+      43
+     </u:kpo> 
+     <u:kso>
+      43
+     </u:kso> 
+     <u:kco>
+      400190
+     </u:kco> 
+     <u:kmc>
+      500119
+     </u:kmc> 
+     <u:psc>
+      14700
+     </u:psc> 
+     <u:kul>
+      465984
+     </u:kul> 
+     <u:cd>
+      103
+     </u:cd> 
+     <u:tcd>
+      1
+     </u:tcd> 
+     <u:co>
+      126
+     </u:co> 
+     <u:ka>
+      22742166
+     </u:ka> 
+     <u:kob>
+      21789703
+     </u:kob> 
+    </d:au> 
+   </d:aa> 
+   <d:psu>
+    NAAANANNNNNNNNNNNNNNNNNNANNNNN
+   </d:psu> 
+   <d:ror> 
+    <d:sz> 
+     <d:sd> 
+      <d:k>
+       1
+      </d:k> 
+      <d:t>
+       Městsk&yacute; soud v Praze
+      </d:t> 
+     </d:sd> 
+     <d:ov>
+      C 175908
+     </d:ov> 
+    </d:sz> 
+    <d:sor> 
+     <d:ssu>
+      Aktivn&iacute;
+     </d:ssu> 
+     <d:kkz> 
+      <d:k>
+       0
+      </d:k> 
+     </d:kkz> 
+     <d:vy> 
+      <d:k>
+       0
+      </d:k> 
+     </d:vy> 
+     <d:zam> 
+      <d:k>
+       0
+      </d:k> 
+     </d:zam> 
+     <d:li> 
+      <d:k>
+       0
+      </d:k> 
+     </d:li> 
+    </d:sor> 
+   </d:ror> 
+   <d:rrz> 
+    <d:zu> 
+     <d:kzu>
+      310004
+     </d:kzu> 
+     <d:nzu>
+      &Uacute;řad městsk&eacute; č&aacute;sti Praha 4
+     </d:nzu> 
+    </d:zu> 
+    <d:fu> 
+     <d:kfu>
+      4
+     </d:kfu> 
+     <d:nfu>
+      Praha 4
+     </d:nfu> 
+    </d:fu> 
+   </d:rrz> 
+   <d:kpp zdroj="RES">
+    10 - 19 zaměstnanců
+   </d:kpp> 
+   <d:nace> 
+    <d:nace zdroj="RES">
+     4120
+    </d:nace> 
+    <d:nace zdroj="RES">
+     00
+    </d:nace> 
+   </d:nace> 
+   <d:ppi> 
+    <d:pp zdroj="OR"> 
+     <d:t>
+       v&yacute;roba, obchod a služby neuveden&eacute; v př&iacute;loh&aacute;ch 1 až 3 živnostensk&eacute;ho z&aacute;kona 
+     </d:t> 
+     <d:t>
+       prov&aacute;děn&iacute; staveb, jejich změn a odstraňov&aacute;n&iacute; 
+     </d:t> 
+    </d:pp> 
+    <d:pp zdroj="RZP"> 
+     <d:t>
+      Prov&aacute;děn&iacute; staveb, jejich změn a odstraňov&aacute;n&iacute;
+     </d:t> 
+     <d:t>
+      V&yacute;roba, obchod a služby neuveden&eacute; v př&iacute;loh&aacute;ch 1 až 3 živnostensk&eacute;ho z&aacute;kona
+     </d:t> 
+    </d:pp> 
+   </d:ppi> 
+   <d:obory_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01001
+     </d:k> 
+     <d:t>
+      Poskytov&aacute;n&iacute; služeb pro zemědělstv&iacute;, zahradnictv&iacute;, rybn&iacute;k&aacute;řstv&iacute;, lesnictv&iacute; a myslivost
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01004
+     </d:k> 
+     <d:t>
+      Nakl&aacute;d&aacute;n&iacute; s reprodukčn&iacute;m materi&aacute;lem lesn&iacute;ch dřevin
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01005
+     </d:k> 
+     <d:t>
+      Chov zv&iacute;řat a jejich v&yacute;cvik (s v&yacute;jimkou živočišn&eacute; v&yacute;roby)
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01006
+     </d:k> 
+     <d:t>
+      &Uacute;prava nerostů, dob&yacute;v&aacute;n&iacute; rašeliny a bahna
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01007
+     </d:k> 
+     <d:t>
+      V&yacute;roba potravin&aacute;řsk&yacute;ch a škrob&aacute;rensk&yacute;ch v&yacute;robků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01008
+     </d:k> 
+     <d:t>
+      Pěstitelsk&eacute; p&aacute;len&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01009
+     </d:k> 
+     <d:t>
+      V&yacute;roba krmiv, krmn&yacute;ch směs&iacute;, doplňkov&yacute;ch l&aacute;tek a premixů
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01010
+     </d:k> 
+     <d:t>
+      V&yacute;roba textili&iacute;, textiln&iacute;ch v&yacute;robků, oděvů a oděvn&iacute;ch doplňků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01011
+     </d:k> 
+     <d:t>
+      V&yacute;roba a opravy obuvi, brašn&aacute;řsk&eacute;ho a sedl&aacute;řsk&eacute;ho zbož&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01012
+     </d:k> 
+     <d:t>
+      Zpracov&aacute;n&iacute; dřeva, v&yacute;roba dřevěn&yacute;ch, korkov&yacute;ch, proutěn&yacute;ch a slaměn&yacute;ch v&yacute;robků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01013
+     </d:k> 
+     <d:t>
+      V&yacute;roba vl&aacute;kniny, pap&iacute;ru a lepenky a zbož&iacute; z těchto materi&aacute;lů
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01014
+     </d:k> 
+     <d:t>
+      Vydavatelsk&eacute; činnosti, polygrafick&aacute; v&yacute;roba, knihařsk&eacute; a kop&iacute;rovac&iacute; pr&aacute;ce
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01015
+     </d:k> 
+     <d:t>
+      V&yacute;roba, rozmnožov&aacute;n&iacute;, distribuce, prodej, pron&aacute;jem zvukov&yacute;ch a zvukově-obrazov&yacute;ch z&aacute;znamů a v&yacute;roba nenahran&yacute;ch nosičů &uacute;dajů a z&aacute;znamů
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01016
+     </d:k> 
+     <d:t>
+      V&yacute;roba koksu, surov&eacute;ho dehtu a jin&yacute;ch pevn&yacute;ch paliv
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01017
+     </d:k> 
+     <d:t>
+      V&yacute;roba chemick&yacute;ch l&aacute;tek, vl&aacute;ken a př&iacute;pravků a kosmetick&yacute;ch prostředků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01018
+     </d:k> 
+     <d:t>
+      V&yacute;roba hnojiv
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01019
+     </d:k> 
+     <d:t>
+      V&yacute;roba plastov&yacute;ch a pryžov&yacute;ch v&yacute;robků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01020
+     </d:k> 
+     <d:t>
+      V&yacute;roba a zpracov&aacute;n&iacute; skla
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01021
+     </d:k> 
+     <d:t>
+      V&yacute;roba stavebn&iacute;ch hmot, porcel&aacute;nov&yacute;ch, keramick&yacute;ch a s&aacute;drov&yacute;ch v&yacute;robků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01022
+     </d:k> 
+     <d:t>
+      V&yacute;roba brusiv a ostatn&iacute;ch miner&aacute;ln&iacute;ch nekovov&yacute;ch v&yacute;robků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01023
+     </d:k> 
+     <d:t>
+      Broušen&iacute; technick&eacute;ho a šperkov&eacute;ho kamene
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01024
+     </d:k> 
+     <d:t>
+      V&yacute;roba a hutn&iacute; zpracov&aacute;n&iacute; železa, drah&yacute;ch a neželezn&yacute;ch kovů a jejich slitin
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01025
+     </d:k> 
+     <d:t>
+      V&yacute;roba kovov&yacute;ch konstrukc&iacute; a kovoděln&yacute;ch v&yacute;robků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01026
+     </d:k> 
+     <d:t>
+      Umělecko-řemesln&eacute; zpracov&aacute;n&iacute; kovů
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01027
+     </d:k> 
+     <d:t>
+      Povrchov&eacute; &uacute;pravy a svařov&aacute;n&iacute; kovů a dalš&iacute;ch materi&aacute;lů
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01028
+     </d:k> 
+     <d:t>
+      V&yacute;roba měřic&iacute;ch, zkušebn&iacute;ch, navigačn&iacute;ch, optick&yacute;ch a fotografick&yacute;ch př&iacute;strojů a zař&iacute;zen&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01029
+     </d:k> 
+     <d:t>
+      V&yacute;roba elektronick&yacute;ch souč&aacute;stek, elektrick&yacute;ch zař&iacute;zen&iacute; a v&yacute;roba a opravy elektrick&yacute;ch strojů, př&iacute;strojů a elektronick&yacute;ch zař&iacute;zen&iacute; pracuj&iacute;c&iacute;ch na mal&eacute;m napět&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01030
+     </d:k> 
+     <d:t>
+      V&yacute;roba neelektrick&yacute;ch zař&iacute;zen&iacute; pro dom&aacute;cnost
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01031
+     </d:k> 
+     <d:t>
+      V&yacute;roba strojů a zař&iacute;zen&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01032
+     </d:k> 
+     <d:t>
+      V&yacute;roba motorov&yacute;ch a př&iacute;pojn&yacute;ch vozidel a karoseri&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01033
+     </d:k> 
+     <d:t>
+      Stavba a v&yacute;roba plavidel
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01034
+     </d:k> 
+     <d:t>
+      V&yacute;roba, v&yacute;voj, projektov&aacute;n&iacute;, zkoušky, instalace, &uacute;držba, opravy, modifikace a konstrukčn&iacute; změny letadel, motorů letadel, vrtul&iacute;, letadlov&yacute;ch č&aacute;st&iacute; a zař&iacute;zen&iacute; a leteck&yacute;ch pozemn&iacute;ch zař&iacute;zen&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01035
+     </d:k> 
+     <d:t>
+      V&yacute;roba dr&aacute;žn&iacute;ch hnac&iacute;ch vozidel a dr&aacute;žn&iacute;ch vozidel na dr&aacute;ze tramvajov&eacute;, trolejbusov&eacute; a lanov&eacute; a železničn&iacute;ho parku
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01036
+     </d:k> 
+     <d:t>
+      V&yacute;roba j&iacute;zdn&iacute;ch kol, voz&iacute;ků pro invalidy a jin&yacute;ch nemotorov&yacute;ch dopravn&iacute;ch prostředků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01037
+     </d:k> 
+     <d:t>
+      V&yacute;roba a opravy čalounick&yacute;ch v&yacute;robků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01038
+     </d:k> 
+     <d:t>
+      V&yacute;roba, opravy a &uacute;držba sportovn&iacute;ch potřeb, her, hraček a dětsk&yacute;ch koč&aacute;rků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01039
+     </d:k> 
+     <d:t>
+      V&yacute;roba zdravotnick&yacute;ch prostředků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01040
+     </d:k> 
+     <d:t>
+      V&yacute;roba a opravy zdrojů ionizuj&iacute;c&iacute;ho z&aacute;řen&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01041
+     </d:k> 
+     <d:t>
+      V&yacute;roba školn&iacute;ch a kancel&aacute;řsk&yacute;ch potřeb, kromě v&yacute;robků z pap&iacute;ru, v&yacute;roba bižuterie, kart&aacute;čnick&eacute;ho a konfekčn&iacute;ho zbož&iacute;, deštn&iacute;ků, upom&iacute;nkov&yacute;ch předmětů
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01042
+     </d:k> 
+     <d:t>
+      V&yacute;roba dalš&iacute;ch v&yacute;robků zpracovatelsk&eacute;ho průmyslu
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01043
+     </d:k> 
+     <d:t>
+      Provozov&aacute;n&iacute; vodovodů a kanalizac&iacute; a &uacute;prava a rozvod vody
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01044
+     </d:k> 
+     <d:t>
+      Nakl&aacute;d&aacute;n&iacute; s odpady (vyjma nebezpečn&yacute;ch)
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01045
+     </d:k> 
+     <d:t>
+      Př&iacute;pravn&eacute; a dokončovac&iacute; stavebn&iacute; pr&aacute;ce, specializovan&eacute; stavebn&iacute; činnosti
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01046
+     </d:k> 
+     <d:t>
+      Sklen&aacute;řsk&eacute; pr&aacute;ce, r&aacute;mov&aacute;n&iacute; a paspartov&aacute;n&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01047
+     </d:k> 
+     <d:t>
+      Zprostředkov&aacute;n&iacute; obchodu a služeb
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01048
+     </d:k> 
+     <d:t>
+      Velkoobchod a maloobchod
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01049
+     </d:k> 
+     <d:t>
+      Zastav&aacute;rensk&aacute; činnost a maloobchod s použit&yacute;m zbož&iacute;m
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01050
+     </d:k> 
+     <d:t>
+      &Uacute;držba motorov&yacute;ch vozidel a jejich př&iacute;slušenstv&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01051
+     </d:k> 
+     <d:t>
+      Potrubn&iacute; a pozemn&iacute; doprava (vyjma železničn&iacute; a silničn&iacute; motorov&eacute; dopravy)
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01052
+     </d:k> 
+     <d:t>
+      Skladov&aacute;n&iacute;, balen&iacute; zbož&iacute;, manipulace s n&aacute;kladem a technick&eacute; činnosti v dopravě
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01053
+     </d:k> 
+     <d:t>
+      Zasilatelstv&iacute; a zastupov&aacute;n&iacute; v celn&iacute;m ř&iacute;zen&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01055
+     </d:k> 
+     <d:t>
+      Ubytovac&iacute; služby
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01056
+     </d:k> 
+     <d:t>
+      Poskytov&aacute;n&iacute; software, poradenstv&iacute; v oblasti informačn&iacute;ch technologi&iacute;, zpracov&aacute;n&iacute; dat, hostingov&eacute; a souvisej&iacute;c&iacute; činnosti a webov&eacute; port&aacute;ly
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01057
+     </d:k> 
+     <d:t>
+      Činnost informačn&iacute;ch a zpravodajsk&yacute;ch kancel&aacute;ř&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01058
+     </d:k> 
+     <d:t>
+      Realitn&iacute; činnost, spr&aacute;va a &uacute;držba nemovitost&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01059
+     </d:k> 
+     <d:t>
+      Pron&aacute;jem a půjčov&aacute;n&iacute; věc&iacute; movit&yacute;ch
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01060
+     </d:k> 
+     <d:t>
+      Poradensk&aacute; a konzultačn&iacute; činnost, zpracov&aacute;n&iacute; odborn&yacute;ch studi&iacute; a posudků
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01061
+     </d:k> 
+     <d:t>
+      Projektov&aacute;n&iacute; pozemkov&yacute;ch &uacute;prav
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01062
+     </d:k> 
+     <d:t>
+      Př&iacute;prava a vypracov&aacute;n&iacute; technick&yacute;ch n&aacute;vrhů, grafick&eacute; a kresličsk&eacute; pr&aacute;ce
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01063
+     </d:k> 
+     <d:t>
+      Projektov&aacute;n&iacute; elektrick&yacute;ch zař&iacute;zen&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01064
+     </d:k> 
+     <d:t>
+      V&yacute;zkum a v&yacute;voj v oblasti př&iacute;rodn&iacute;ch a technick&yacute;ch věd nebo společensk&yacute;ch věd
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01065
+     </d:k> 
+     <d:t>
+      Testov&aacute;n&iacute;, měřen&iacute;, anal&yacute;zy a kontroly
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01066
+     </d:k> 
+     <d:t>
+      Reklamn&iacute; činnost, marketing, medi&aacute;ln&iacute; zastoupen&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01067
+     </d:k> 
+     <d:t>
+      N&aacute;vrh&aacute;řsk&aacute;, design&eacute;rsk&aacute;, aranž&eacute;rsk&aacute; činnost a modeling
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01068
+     </d:k> 
+     <d:t>
+      Fotografick&eacute; služby
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01069
+     </d:k> 
+     <d:t>
+      Překladatelsk&aacute; a tlumočnick&aacute; činnost
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01070
+     </d:k> 
+     <d:t>
+      Služby v oblasti administrativn&iacute; spr&aacute;vy a služby organizačně hospod&aacute;řsk&eacute; povahy
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01071
+     </d:k> 
+     <d:t>
+      Provozov&aacute;n&iacute; cestovn&iacute; agentury a průvodcovsk&aacute; činnost v oblasti cestovn&iacute;ho ruchu
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01072
+     </d:k> 
+     <d:t>
+      Mimoškoln&iacute; v&yacute;chova a vzděl&aacute;v&aacute;n&iacute;, poř&aacute;d&aacute;n&iacute; kurzů, školen&iacute;, včetně lektorsk&eacute; činnosti
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01073
+     </d:k> 
+     <d:t>
+      Provozov&aacute;n&iacute; kulturn&iacute;ch, kulturně-vzděl&aacute;vac&iacute;ch a z&aacute;bavn&iacute;ch zař&iacute;zen&iacute;, poř&aacute;d&aacute;n&iacute; kulturn&iacute;ch produkc&iacute;, z&aacute;bav, v&yacute;stav, veletrhů, přehl&iacute;dek, prodejn&iacute;ch a obdobn&yacute;ch akc&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01074
+     </d:k> 
+     <d:t>
+      Provozov&aacute;n&iacute; tělov&yacute;chovn&yacute;ch a sportovn&iacute;ch zař&iacute;zen&iacute; a organizov&aacute;n&iacute; sportovn&iacute; činnosti
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01075
+     </d:k> 
+     <d:t>
+      Pran&iacute; pro dom&aacute;cnost, žehlen&iacute;, opravy a &uacute;držba oděvů, bytov&eacute;ho textilu a osobn&iacute;ho zbož&iacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01076
+     </d:k> 
+     <d:t>
+      Poskytov&aacute;n&iacute; technick&yacute;ch služeb
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01077
+     </d:k> 
+     <d:t>
+      Opravy a &uacute;držba potřeb pro dom&aacute;cnost, předmětů kulturn&iacute; povahy, v&yacute;robků jemn&eacute; mechaniky, optick&yacute;ch př&iacute;strojů a měřidel
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01078
+     </d:k> 
+     <d:t>
+      Poskytov&aacute;n&iacute; služeb osobn&iacute;ho charakteru a pro osobn&iacute; hygienu
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01079
+     </d:k> 
+     <d:t>
+      Poskytov&aacute;n&iacute; služeb pro rodinu a dom&aacute;cnost
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01080
+     </d:k> 
+     <d:t>
+      V&yacute;roba, obchod a služby jinde nezařazen&eacute;
+     </d:t> 
+    </d:obor_cinnosti> 
+    <d:obor_cinnosti> 
+     <d:k>
+      Z01081
+     </d:k> 
+     <d:t>
+      Činnost odborn&eacute;ho lesn&iacute;ho hospod&aacute;ře a vyhotovov&aacute;n&iacute; lesn&iacute;ch hospod&aacute;řsk&yacute;ch pl&aacute;nů a osnov
+     </d:t> 
+    </d:obor_cinnosti> 
+   </d:obory_cinnosti> 
+  </d:vbas> 
+ </are:odpoved> 
+</are:ares_odpovedi>
