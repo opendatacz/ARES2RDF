@@ -25,7 +25,8 @@
     
     <xsl:param name="namespace">http://linked.opendata.cz/resource/</xsl:param>
     <xsl:variable name="baseURI" select="concat($namespace, 'wwwinfo.mfcr.cz/ares/')"/>
-    
+    <xsl:variable name="icoScheme" select="f:pathUri('concept-scheme/CZ-ICO')"/>
+
     <xsl:output encoding="UTF-8" indent="yes" method="xml" normalization-form="NFC"/>
     
     <xsl:function name="f:classURI" as="xs:anyURI">
@@ -140,6 +141,7 @@
     <xsl:template mode="court" match="D:K">
         <adms:identifier>
             <adms:Identifier>
+                <skos:inScheme rdf:resource="{$icoScheme}"/>
                 <skos:notation><xsl:value-of select="."/></skos:notation>
             </adms:Identifier>
         </adms:identifier>
@@ -154,6 +156,7 @@
     <xsl:template mode="linked" match="D:ICO">
         <adms:Identifier rdf:about="{f:classURI('Identifier', f:prefixICO(text()))}">
             <skos:notation><xsl:value-of select="text()"/></skos:notation>
+            <skos:inScheme rdf:resource="{$icoScheme}"/>
             <adms:schemeAgency xml:lang="cs">Český statistický úřad</adms:schemeAgency>
             <xsl:apply-templates mode="identifier" select="../D:DV|../D:ROR/D:SZ/D:SD"/>
         </adms:Identifier>
