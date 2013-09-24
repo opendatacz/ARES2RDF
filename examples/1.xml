@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<are:ares_odpovedi xmlns:are="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3" xmlns:d="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_datatypes/v_1.0.3" xmlns:u="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/uvis_datatypes/v_1.0.3" odpoved_datum_cas="2013-09-23T16:09:46" odpoved_pocet="1" odpoved_typ="Basic" vystup_format="XML" xslt="klient" validation_xslt="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_odpovedi.xsl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3 http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_basic/v_1.0.3/ares_answer_basic_v_1.0.3.xsd" id="ares"> 
+ <are:odpoved> 
+  <d:pid>
+    0 
+  </d:pid> 
+  <d:e> 
+   <d:ek>
+     1 
+   </d:ek> 
+   <d:et>
+     Chyba 61 - subjekt zanikl 
+   </d:et> 
+  </d:e> 
+  <d:vh> 
+   <d:k>
+     2 
+   </d:k> 
+  </d:vh> 
+  <d:pza>
+    0 
+  </d:pza> 
+  <d:uvod> 
+   <d:nd>
+     Výpis z dat Registru ARES - aktuální stav ke dni 2013-09-23 
+   </d:nd> 
+   <d:adb>
+     2013-09-23 
+   </d:adb> 
+   <d:dvy>
+     2013-09-23 
+   </d:dvy> 
+   <d:cas>
+     16:09:48 
+   </d:cas> 
+   <d:typ_odkazu>
+     0 
+   </d:typ_odkazu> 
+  </d:uvod> 
+ </are:odpoved> 
+</are:ares_odpovedi>
