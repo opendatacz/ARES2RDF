@@ -26,6 +26,7 @@
     <xsl:param name="namespace">http://linked.opendata.cz/resource/</xsl:param>
     <xsl:variable name="baseURI" select="concat($namespace, 'wwwinfo.mfcr.cz/ares/')"/>
     <xsl:variable name="icoScheme" select="f:pathURI('concept-scheme/CZ-ICO')"/>
+    <xsl:strip-space elements="*"/>
 
     <xsl:output encoding="UTF-8" indent="yes" method="xml" normalization-form="NFC"/>
     
