@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<are:Ares_odpovedi xmlns:are="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3"
+  xmlns:D="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_datatypes/v_1.0.3"
+  xmlns:U="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/uvis_datatypes/v_1.0.3"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  odpoved_datum_cas="2013-09-27T11:54:18"
+  odpoved_pocet="1"
+  odpoved_typ="Vypis_OR"
+  vystup_format="XML"
+  xslt="klient"
+  validation_XSLT="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_odpovedi.xsl"
+  xsi:schemaLocation="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3 http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3/ares_answer_or_v_1.0.3.xsd"
+  Id="ares">
+  <are:Odpoved>
+    <D:PID>0</D:PID>
+    <D:VH>
+      <D:K>1</D:K>
+    </D:VH>
+    <D:PZA>1</D:PZA>
+    <D:Vypis_OR>
+      <D:UVOD>
+        <D:ND>Výpis z dat Obchodního Rejstříku v ARES</D:ND>
+        <D:ADB>2013-09-25</D:ADB>
+        <D:DVY>2013-09-27</D:DVY>
+        <D:CAS>11:54:19</D:CAS>
+        <D:TV>aktualni</D:TV>
+        <D:Typ_odkazu>0</D:Typ_odkazu>
+      </D:UVOD>
+      <D:ZAU>
+        <D:POD>2010-03-02</D:POD>
+        <D:S>
+          <D:SSU>Aktivní</D:SSU>
+          <D:KKZ>
+            <D:K>0</D:K>
+          </D:KKZ>
+          <D:VY>
+            <D:K>0</D:K>
+          </D:VY>
+          <D:ZAM>
+            <D:K>0</D:K>
+          </D:ZAM>
+          <D:LI>
+            <D:K>0</D:K>
+          </D:LI>
+        </D:S>
+        <D:ICO>70188653</D:ICO>
+        <D:OF>DOMOV NA STŘÍBRNÉM VRCHU</D:OF>
+        <D:PFO>
+          <D:KPF>331</D:KPF>
+          <D:NPF>Příspěvková organizace</D:NPF>
+          <D:PFO>P</D:PFO>
+          <D:TZU>Tuzemská</D:TZU>
+        </D:PFO>
+        <D:SI>
+          <D:IDA>19857846</D:IDA>
+          <D:KS>203</D:KS>
+          <D:N>Rokytnice v O.h.</D:N>
+          <D:NU>Stříbrný vrch</D:NU>
+          <D:CA>199</D:CA>
+          <D:PSC>51761</D:PSC>
+        </D:SI>
+        <D:DZOR>2003-08-22</D:DZOR>
+      </D:ZAU>
+      <D:REG>
+        <D:SZ>
+          <D:SD>
+            <D:K>6</D:K>
+            <D:T>Krajský soud v Hradci Králové</D:T>
+          </D:SD>
+          <D:OV>Pr 703</D:OV>
+        </D:SZ>
+      </D:REG>
+      <D:CIN>
+        <D:DKC>
+          <D:T>
+pronájem nemovitostí, bytů a nebytových prostor
+</D:T>
+          <D:T>
+výroba, obchod a služby neuvedené v přílohách 1 až 3 živnostenského
+zákona
+obory činnosti:
+- výroba potravinářských a škrobárenských výrobků
+- výroba školních a kancelářských potřeb, kromě výrobků z papíru, výroba
+bižuterie, kartáčnického a konfekčního zboží, deštníků, upomínkových předmětů
+- velkoobchod a maloobchod
+- poradenská a konzultační činnost, zpracování odborných studií a posudků
+- mimoškolní výchova a vzdělávání, pořádání kurzů, školení, včetně
+lektorské činnosti
+- praní pro domácnost, žehlení, opravy a údržba oděvů, bytového textilu
+a osobního zboží
+</D:T>
+        </D:DKC>
+        <D:PCI>
+          <D:T>
+poskytování pobytových služeb osobám se sníženou soběstačností z důvodu
+zdravotního postižení
+</D:T>
+          <D:T>
+poskytování pobytových služeb osobám se sníženou soběstačností z důvodu
+chronického duševního onemocnění
+</D:T>
+        </D:PCI>
+      </D:CIN>
+      <D:SO>
+        <D:CSO>
+          <D:C>
+            <D:KAN>1</D:KAN>
+            <D:F>ředitel</D:F>
+            <D:FO>
+              <D:TP>Mgr.</D:TP>
+              <D:J>Eva</D:J>
+              <D:P>Fremuthová</D:P>
+              <D:DN>1967-06-28</D:DN>
+              <D:B>
+                <D:IDA>19857848</D:IDA>
+                <D:KS>203</D:KS>
+                <D:N>Rokytnice v Orlických horách</D:N>
+                <D:NU>Stříbrný vrch</D:NU>
+                <D:CA>137</D:CA>
+                <D:PSC>51761</D:PSC>
+              </D:B>
+            </D:FO>
+            <D:VF>
+              <D:DZA>2009-05-01</D:DZA>
+            </D:VF>
+          </D:C>
+        </D:CSO>
+        <D:T>
+Způsob jednání:
+Za příspěvkovou organizaci jedná ředitel.
+</D:T>
+      </D:SO>
+    </D:Vypis_OR>
+  </are:Odpoved>
+</are:Ares_odpovedi>
