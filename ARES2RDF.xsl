@@ -36,6 +36,33 @@
         <xsl:value-of select="f:pathIdURI(encode-for-uri(replace(lower-case($classLabel), '\s', '-')), $id)"/>
     </xsl:function>
     
+    <xsl:function name="f:icoBasedURI" as="xs:anyURI">
+        <xsl:param name="ico" as="xs:string"/>
+        <xsl:param name="fragment" as="xs:string"/>
+        <xsl:value-of select="concat(f:classURI('Business entity', $ico), '/', $fragment)"/>
+    </xsl:function>
+    
+    <xsl:function name="f:icoBasedAddressURI" as="xs:anyURI">
+        <xsl:param name="ico" as="xs:string"/>
+        <xsl:param name="context" as="node()"/>
+        <xsl:value-of select="f:icoBasedURI($ico, concat('postal-address/', generate-id($context)))"/>
+    </xsl:function>
+    
+    <xsl:function name="f:pathIdURIWithICOFallback" as="xs:anyURI">
+        <xsl:param name="ico" as="xs:string"/>
+        <xsl:param name="path" as="xs:string"/>
+        <xsl:param name="id" as="node()*"/>
+        <xsl:param name="context" as="node()"/>
+        <xsl:choose>
+            <xsl:when test="$id">
+                <xsl:value-of select="f:pathIdURI($path, $id)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="f:icoBasedURI($ico, concat($path, '/', generate-id($context)))"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
     <xsl:function name="f:pathURI" as="xs:anyURI">
         <xsl:param name="path" as="xs:string"/>
         <xsl:value-of select="concat($baseURI, $path)"/>
@@ -68,22 +95,27 @@
             <rdf:type rdf:resource="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
             <rov:registration rdf:resource="{f:classURI('Identifier', $ico)}"/>
             <gr:legalName><xsl:value-of select="D:OF"/></gr:legalName>
-            <xsl:apply-templates/>
+            <xsl:apply-templates>
+                <xsl:with-param name="ico" tunnel="yes" select="$ico"/>
+            </xsl:apply-templates>
         </gr:BusinessEntity>    
-        <xsl:apply-templates mode="linked"/>
+        <xsl:apply-templates mode="linked">
+            <xsl:with-param name="ico" tunnel="yes" select="$ico"/>
+        </xsl:apply-templates>
     </xsl:template>
 
     <!-- gr:BusinessEntity's properties -->
     
     <xsl:template match="D:AA">
         <!-- Adresa ARES -->
-        <xsl:variable name="id" select="if (D:IDA) then D:IDA else generate-id(.)"/>
-        <schema:address rdf:resource="{f:classURI('Postal address', $id)}"/>
+        <xsl:param name="ico" tunnel="yes"/>
+        <schema:address rdf:resource="{f:pathIdURIWithICOFallback($ico, 'postal-address', D:IDA, .)}"/>
     </xsl:template>
     
     <xsl:template match="D:AD">
         <!-- Adresa doručovací -->
-        <schema:address rdf:resource="{f:classURI('Postal address', generate-id(.))}"/>   
+        <xsl:param name="ico" tunnel="yes"/>
+        <schema:address rdf:resource="{f:icoBasedAddressURI($ico, .)}"/>
     </xsl:template>
     
     <xsl:template match="D:Nace">
@@ -93,8 +125,8 @@
     
     <xsl:template match="D:NACE">
         <!-- NACE kód -->
-        <xsl:variable name="id" select="if (text()) then text() else generate-id(.)"/>
-        <rov:orgActivity rdf:resource="{f:pathIdURI('concept-scheme/nace', $id)}"/>
+        <xsl:param name="ico" tunnel="yes"/>
+        <rov:orgActivity rdf:resource="{f:pathIdURIWithICOFallback($ico, 'concept-scheme/nace', text(), .)}"/>
     </xsl:template>
     
     <xsl:template match="D:Obory_cinnosti">
@@ -104,8 +136,8 @@
     
     <xsl:template match="D:Obor_cinnosti">
         <!-- Obor činnosti -->
-        <xsl:variable name="id" select="if (D:K) then D:K else generate-id(.)"/>
-        <rov:orgActivity rdf:resource="{f:pathIdURI('concept-scheme/organization-activities', $id)}"/>
+        <xsl:param name="ico" tunnel="yes"/>
+        <rov:orgActivity rdf:resource="{f:pathIdURIWithICOFallback($ico, 'concept-scheme/organization-activities', D:K, .)}"/>
     </xsl:template>
     
     <xsl:template match="D:PF">
@@ -181,15 +213,16 @@
     
     <xsl:template mode="linked" match="D:AA">
         <!-- Adresa ARES -->
-        <xsl:variable name="id" select="if (D:IDA) then D:IDA else generate-id(.)"/>
-        <schema:PostalAddress rdf:about="{f:classURI('Postal address', $id)}">
+        <xsl:param name="ico" tunnel="yes"/>
+        <schema:PostalAddress rdf:about="{f:pathIdURIWithICOFallback($ico, 'postal-address', D:IDA, .)}">
             <xsl:apply-templates mode="linked"/>
         </schema:PostalAddress>    
     </xsl:template>
     
     <xsl:template mode="linked" match="D:AD">
         <!-- Adresa doručovací -->
-        <schema:PostalAddress rdf:about="{f:classURI('Postal address', generate-id(.))}">
+        <xsl:param name="ico" tunnel="yes"/>
+        <schema:PostalAddress rdf:about="{f:icoBasedAddressURI($ico, .)}">
             <xsl:apply-templates mode="linked"/>
         </schema:PostalAddress>
     </xsl:template>
@@ -257,8 +290,8 @@
     
     <xsl:template mode="linked" match="D:NACE">
         <!-- NACE kód -->
-        <xsl:variable name="id" select="if (text()) then text() else generate-id(.)"/>
-        <skos:Concept rdf:about="{f:pathIdURI('concept-scheme/nace', $id)}">
+        <xsl:param name="ico" tunnel="yes"/>
+        <skos:Concept rdf:about="{f:pathIdURIWithICOFallback($ico, 'concept-scheme/nace', text(), .)}">
             <skos:inScheme rdf:resource="http://ec.europa.eu/eurostat/ramon/rdfdata/nace_r2"/>
             <xsl:apply-templates mode="linked"/>
         </skos:Concept>  
@@ -275,8 +308,10 @@
     
     <xsl:template mode="linked" match="D:Obor_cinnosti">
         <!-- Obor činnosti -->
-        <xsl:variable name="id" select="if (D:K) then D:K else generate-id(.)"/>
-        <skos:Concept rdf:about="{f:pathIdURI('concept-scheme/organization-activities', $id)}">
+        <xsl:param name="ico" tunnel="yes"/>
+        <xsl:variable name="schemePath">concept-scheme/organization-activities</xsl:variable>
+        <skos:Concept rdf:about="{f:pathIdURIWithICOFallback($ico, $schemePath, D:K, .)}">
+            <skos:inScheme rdf:resource="{f:pathURI($schemePath)}"/>
             <xsl:apply-templates mode="linked"/>
         </skos:Concept>
     </xsl:template>
