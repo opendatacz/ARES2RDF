@@ -25,14 +25,42 @@
     
     <xsl:param name="namespace">http://linked.opendata.cz/resource/</xsl:param>
     <xsl:variable name="baseURI" select="concat($namespace, 'wwwinfo.mfcr.cz/ares/')"/>
+    <xsl:variable name="icoScheme" select="concat($namespace, 'concept-scheme/CZ-ICO')"/>
     <xsl:strip-space elements="*"/>
     
-    <xsl:output encoding="UTF-8" indent="yes" method="xml"/>
+    <xsl:output encoding="UTF-8" indent="yes" method="xml" normalization-form="NFC"/>
     
     <xsl:function name="f:classURI" as="xs:anyURI">
         <xsl:param name="classLabel" as="xs:string"/>
         <xsl:param name="id" as="xs:string"/>
-        <xsl:value-of select="f:pathIdURI(encode-for-uri(replace(lower-case($classLabel), '\s', '-')), normalize-space($id))"/>
+        <xsl:value-of select="f:pathIdURI(encode-for-uri(replace(lower-case(normalize-space($classLabel)), '\s', '-')), normalize-space($id))"/>
+    </xsl:function>
+    
+    <xsl:function name="f:icoBasedURI" as="xs:anyURI">
+        <xsl:param name="ico" as="xs:string"/>
+        <xsl:param name="fragment" as="xs:string"/>
+        <xsl:value-of select="concat(f:classURI('Business entity', normalize-space($ico)), '/', normalize-space($fragment))"/>
+    </xsl:function>
+    
+    <xsl:function name="f:icoBasedAddressURI" as="xs:anyURI">
+        <xsl:param name="ico" as="xs:string"/>
+        <xsl:param name="context" as="node()"/>
+        <xsl:value-of select="f:icoBasedURI(normalize-space($ico), concat('postal-address/', generate-id($context)))"/>
+    </xsl:function>
+    
+    <xsl:function name="f:pathIdURIWithICOFallback" as="xs:anyURI">
+        <xsl:param name="ico" as="xs:string"/>
+        <xsl:param name="path" as="xs:string"/>
+        <xsl:param name="id" as="node()*"/>
+        <xsl:param name="context" as="node()"/>
+        <xsl:choose>
+            <xsl:when test="$id">
+                <xsl:value-of select="f:pathIdURI($path, normalize-space($id))"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="f:icoBasedURI($ico, concat($path, '/', generate-id($context)))"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
     
     <xsl:function name="f:pathURI" as="xs:anyURI">
@@ -48,8 +76,9 @@
     
     <xsl:function name="f:prefixICO" as="xs:string">
         <xsl:param name="ico" as="xs:string"/>
-        <xsl:value-of select="concat('CZ', normalize-space($ico))"/>
+        <xsl:value-of select="concat('CZ', $ico)"/>
     </xsl:function>
+
     
     <xsl:template match="are:ares_odpovedi">
         <rdf:RDF>
@@ -62,32 +91,37 @@
     </xsl:template>
     
     <xsl:template match="d:vbas">
-        <xsl:variable name="ico" select="f:prefixICO(d:ico/text())"/>
+        <xsl:variable name="ico" select="f:prefixICO(normalize-space(d:ico/text()))"/>
         <gr:BusinessEntity rdf:about="{f:classURI('Business Entity', $ico)}">
             <rdf:type rdf:resource="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
             <rov:registration rdf:resource="{f:classURI('Identifier', $ico)}"/>
             <gr:legalName><xsl:value-of select="normalize-space(d:of)"/></gr:legalName>
-            <xsl:apply-templates/>
+            <xsl:apply-templates>
+                <xsl:with-param name="ico" tunnel="yes" select="$ico"/>
+            </xsl:apply-templates>
         </gr:BusinessEntity>    
-        <xsl:apply-templates mode="linked"/>
+        <xsl:apply-templates mode="linked">
+            <xsl:with-param name="ico" tunnel="yes" select="$ico"/>
+        </xsl:apply-templates>
     </xsl:template>
 
     <!-- gr:BusinessEntity's properties -->
     
     <xsl:template match="d:aa">
         <!-- Adresa ARES -->
-        <xsl:variable name="id" select="if (d:ida) then d:ida else generate-id(.)"/>
-        <schema:address rdf:resource="{f:classURI('Postal address', $id)}"/>
+        <xsl:param name="ico" tunnel="yes"/>
+        <schema:address rdf:resource="{f:pathIdURIWithICOFallback($ico, 'postal-address', d:ida, .)}"/>
     </xsl:template>
     
     <xsl:template match="d:ad">
         <!-- Adresa doručovací -->
-        <schema:address rdf:resource="{f:classURI('Postal address', generate-id(.))}"/>   
+        <xsl:param name="ico" tunnel="yes"/>
+        <schema:address rdf:resource="{f:icoBasedAddressURI($ico, .)}"/>
     </xsl:template>
     
     <xsl:template match="d:nace[not(d:nace)]">
-        <xsl:variable name="id" select="if (text()) then text() else generate-id(.)"/>
-		<rov:orgActivity rdf:resource="{f:pathIdURI('concept-scheme/nace', $id)}"/>
+        <xsl:param name="ico" tunnel="yes"/>
+        <rov:orgActivity rdf:resource="{f:pathIdURIWithICOFallback($ico, 'concept-scheme/nace', text(), .)}"/>
     </xsl:template>
     
     <xsl:template match="d:nace[d:nace]">
@@ -101,8 +135,8 @@
     
     <xsl:template match="d:obor_cinnosti">
         <!-- Obor činnosti -->
-        <xsl:variable name="id" select="if (d:k) then d:k else generate-id(.)"/>
-        <rov:orgActivity rdf:resource="{f:pathIdURI('concept-scheme/organization-activities', $id)}"/>
+        <xsl:param name="ico" tunnel="yes"/>
+        <rov:orgActivity rdf:resource="{f:pathIdURIWithICOFallback($ico, 'concept-scheme/organization-activities', d:k, .)}"/>
     </xsl:template>
     
     <xsl:template match="d:pf">
@@ -114,7 +148,7 @@
         <!-- Předměty podnikání -->
         <rov:orgActivity>
             <skos:Concept>
-                <skos:prefLabel xml:lang="cs"><xsl:value-of select="."/></skos:prefLabel>
+                <skos:prefLabel xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></skos:prefLabel>
             </skos:Concept>
         </rov:orgActivity>
     </xsl:template>
@@ -129,7 +163,7 @@
         <rov:orgStatus>
             <skos:Concept>
                 <skos:inScheme rdf:resource="{f:pathURI('concept-scheme/organization-statuses')}"/>
-                <skos:prefLabel xml:lang="cs"><xsl:value-of select="."/></skos:prefLabel>
+                <skos:prefLabel xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></skos:prefLabel>
             </skos:Concept>
         </rov:orgStatus>
     </xsl:template>
@@ -139,20 +173,21 @@
     <xsl:template mode="court" match="d:k">
         <adms:identifier>
             <adms:Identifier>
-                <skos:notation><xsl:value-of select="."/></skos:notation>
+                <skos:notation><xsl:value-of select="normalize-space(./text())"/></skos:notation>
             </adms:Identifier>
         </adms:identifier>
     </xsl:template>
     
     <xsl:template mode="court" match="d:t">
-        <dcterms:title xml:lang="cs"><xsl:value-of select="."/></dcterms:title>
+        <dcterms:title xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></dcterms:title>
     </xsl:template>
     
     <!-- Templates for linked resources -->
     
     <xsl:template mode="linked" match="d:ico">
         <adms:Identifier rdf:about="{f:classURI('Identifier', f:prefixICO(text()))}">
-            <skos:notation><xsl:value-of select="text()"/></skos:notation>
+            <skos:notation><xsl:value-of select="normalize-space(text())"/></skos:notation>
+            <skos:inScheme rdf:resource="{$icoScheme}"/>
             <adms:schemeAgency xml:lang="cs">Český statistický úřad</adms:schemeAgency>
             <xsl:apply-templates mode="identifier" select="../d:dv|../d:ror/d:sz/d:sd"/>
         </adms:Identifier>
@@ -160,7 +195,7 @@
     
     <xsl:template mode="identifier" match="d:dv">
         <!-- Datum vydání -->
-        <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="."/></dcterms:issued>
+        <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(./text())"/></dcterms:issued>
     </xsl:template>
     
     <xsl:template mode="identifier" match="d:ror/d:sz/d:sd">
@@ -176,22 +211,23 @@
     
     <xsl:template mode="linked" match="d:aa">
         <!-- Adresa ARES -->
-        <xsl:variable name="id" select="if (d:ida) then d:ida else generate-id(.)"/>
-        <schema:PostalAddress rdf:about="{f:classURI('Postal address', $id)}">
+        <xsl:param name="ico" tunnel="yes"/>
+        <schema:PostalAddress rdf:about="{f:pathIdURIWithICOFallback($ico, 'postal-address', d:ida, .)}">
             <xsl:apply-templates mode="linked"/>
         </schema:PostalAddress>    
     </xsl:template>
     
     <xsl:template mode="linked" match="d:ad">
         <!-- Adresa doručovací -->
-        <schema:PostalAddress rdf:about="{f:classURI('Postal address', generate-id(.))}">
+        <xsl:param name="ico" tunnel="yes"/>
+        <schema:PostalAddress rdf:about="{f:icoBasedAddressURI($ico, .)}">
             <xsl:apply-templates mode="linked"/>
         </schema:PostalAddress>
     </xsl:template>
     
     <xsl:template mode="linked" match="d:at[parent::d:aa]">
         <!-- Adresa textem -->
-        <schema:description><xsl:value-of select="."/></schema:description>    
+        <schema:description><xsl:value-of select="normalize-space(./text())"/></schema:description>    
     </xsl:template>
     
     <xsl:template mode="linked" match="d:cd[parent::d:aa]|d:ca[parent::d:aa]">
@@ -202,14 +238,14 @@
         <xsl:variable name="cislo">
             <xsl:choose>
                 <xsl:when test="$cislo_orientacni"><xsl:value-of select="concat(., '/', $cislo_orientacni)"/></xsl:when>
-                <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
+                <xsl:otherwise><xsl:value-of select="normalize-space(./text())"/></xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
         
         <schema:streetAddress>
             <xsl:choose>
-                <xsl:when test="not($ulice) and $nazev_obce"><xsl:value-of select="concat($nazev_obce, ' ', $cislo)"/></xsl:when>
-                <xsl:otherwise><xsl:value-of select="concat($ulice, ' ', $cislo)"/></xsl:otherwise>
+                <xsl:when test="not($ulice) and $nazev_obce"><xsl:value-of select="concat(normalize-space($nazev_obce/text()), ' ', normalize-space($cislo/text()))"/></xsl:when>
+                <xsl:otherwise><xsl:value-of select="concat(normalize-space($ulice/text()), ' ', normalize-space($cislo/text()))"/></xsl:otherwise>
             </xsl:choose>
         </schema:streetAddress>
     </xsl:template>
@@ -221,13 +257,13 @@
         <xsl:variable name="nazev">
             <xsl:choose>
                 <xsl:when test="$nazev_casti_obce and $nazev_mestske_casti">
-                    <xsl:value-of select="concat(., ', ', $nazev_mestske_casti, ' - ', $nazev_casti_obce)"/>
+                    <xsl:value-of select="concat(normalize-space(./text()), ', ', normalize-space($nazev_mestske_casti/text()), ' - ', normalize-space($nazev_casti_obce/text()))"/>
                 </xsl:when>
                 <xsl:when test="$nazev_casti_obce and not($nazev_mestske_casti)">
-                    <xsl:value-of select="concat(., ', ', $nazev_casti_obce)"/>
+                    <xsl:value-of select="concat(normalize-space(./text()), ', ', normalize-space($nazev_casti_obce/text()))"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="."/>
+                    <xsl:value-of select="normalize-space(./text())"/>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
@@ -237,12 +273,12 @@
     
     <xsl:template mode="linked" match="d:nok[parent::d:aa]">
         <!-- Název okresu -->
-        <schema:addressRegion><xsl:value-of select="."/></schema:addressRegion>    
+        <schema:addressRegion><xsl:value-of select="normalize-space(./text())"/></schema:addressRegion>    
     </xsl:template>
     
     <xsl:template mode="linked" match="d:ns[parent::d:aa]">
         <!-- Název státu -->
-        <schema:addressCountry><xsl:value-of select="."/></schema:addressCountry>
+        <schema:addressCountry><xsl:value-of select="normalize-space(./text())"/></schema:addressCountry>
     </xsl:template>
     
     <xsl:template mode="linked" match="d:nace[d:nace]">
@@ -251,16 +287,15 @@
 
     <xsl:template mode="linked" match="d:nace[not(d:nace)]">
         <!-- NACE kód -->
-		<xsl:variable name="id" select="if (text()) then text() else generate-id(.)"/>
-		<skos:Concept rdf:about="{f:pathIdURI('concept-scheme/nace', $id)}">
-			<skos:inScheme rdf:resource="http://ec.europa.eu/eurostat/ramon/rdfdata/nace_r2"/>
-			<xsl:apply-templates mode="linked"/>
-		</skos:Concept>
-        <xsl:apply-templates mode="linked"/>
+        <xsl:param name="ico" tunnel="yes"/>
+        <skos:Concept rdf:about="{f:pathIdURIWithICOFallback($ico, 'concept-scheme/nace', text(), .)}">
+            <skos:inScheme rdf:resource="http://ec.europa.eu/eurostat/ramon/rdfdata/nace_r2"/>
+            <xsl:apply-templates mode="linked"/>
+        </skos:Concept>  
     </xsl:template>
     
     <xsl:template mode="linked" match="text()[parent::d:nace]">
-        <skos:notation><xsl:value-of select="."/></skos:notation>    
+        <skos:notation><xsl:value-of select="normalize-space(.)"/></skos:notation>    
     </xsl:template>
     
     <xsl:template mode="linked" match="d:obory_cinnosti">
@@ -270,43 +305,45 @@
     
     <xsl:template mode="linked" match="d:obor_cinnosti">
         <!-- Obor činnosti -->
-        <xsl:variable name="id" select="if (d:k) then d:k else generate-id(.)"/>
-        <skos:Concept rdf:about="{f:pathIdURI('concept-scheme/organization-activities', $id)}">
+        <xsl:param name="ico" tunnel="yes"/>
+        <xsl:variable name="schemePath">concept-scheme/organization-activities</xsl:variable>
+        <skos:Concept rdf:about="{f:pathIdURIWithICOFallback($ico, $schemePath, d:k, .)}">
+            <skos:inScheme rdf:resource="{f:pathURI($schemePath)}"/>
             <xsl:apply-templates mode="linked"/>
         </skos:Concept>
     </xsl:template>
     
     <xsl:template mode="linked" match="d:k[parent::d:obor_cinnosti]">
         <!-- Kód oboru činnosti -->
-        <skos:notation><xsl:value-of select="."/></skos:notation>
+        <skos:notation><xsl:value-of select="normalize-space(./text())"/></skos:notation>
     </xsl:template>
     
     <xsl:template mode="linked" match="d:t[parent::d:obor_cinnosti]">
         <!-- Název oboru činnosti -->
-        <skos:prefLabel xml:lang="cs"><xsl:value-of select="."/></skos:prefLabel>
+        <skos:prefLabel xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></skos:prefLabel>
     </xsl:template>
     
     <xsl:template mode="linked" match="d:psc[parent::d:aa]|d:zahr_psc[parent::d:aa]">
         <!-- Poštovní směrovací číslo, zahraniční PSČ -->
-        <schema:postalCode><xsl:value-of select="."/></schema:postalCode>
+        <schema:postalCode><xsl:value-of select="normalize-space(./text())"/></schema:postalCode>
     </xsl:template>
     
     <xsl:template mode="linked" match="d:pb[parent::d:ad]">
         <!-- PSČ a obec -->
-        <xsl:analyze-string select="." regex="(\d{{5}})\s+(\w{{1,54}})">
+        <xsl:analyze-string select="normalize-space(./text())" regex="(\d{{5}})\s+(\w{{1,54}})">
             <xsl:matching-substring>
                 <schema:postalCode><xsl:value-of select="regex-group(1)"/></schema:postalCode>
                 <schema:addressLocality><xsl:value-of select="regex-group(2)"/></schema:addressLocality>
             </xsl:matching-substring>
             <xsl:non-matching-substring>
-                <schema:description><xsl:value-of select="."/></schema:description>
+                <schema:description><xsl:value-of select="normalize-space(.)"/></schema:description>
             </xsl:non-matching-substring>
         </xsl:analyze-string>
     </xsl:template>
     
     <xsl:template mode="linked" match="d:uc[parent::d:ad]">
         <!-- Ulice a číslo -->
-        <schema:streetAddress><xsl:value-of select="."/></schema:streetAddress>
+        <schema:streetAddress><xsl:value-of select="normalize-space(./text())"/></schema:streetAddress>
     </xsl:template>
     
     <xsl:template mode="linked" match="d:pf">
@@ -320,12 +357,12 @@
     
     <xsl:template mode="linked" match="d:kpf[parent::d:pf]">
         <!-- Kód právní formy -->
-        <skos:notation><xsl:value-of select="."/></skos:notation>
+        <skos:notation><xsl:value-of select="normalize-space(./text())"/></skos:notation>
     </xsl:template>
     
     <xsl:template mode="linked" match="d:npf[parent::d:pf]">
         <!-- Název právní formy -->
-        <skos:prefLabel xml:lang="cs"><xsl:value-of select="."/></skos:prefLabel> 
+        <skos:prefLabel xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></skos:prefLabel> 
     </xsl:template>
     
     <!-- Catch-all empty template -->
