@@ -1,0 +1,37 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?identifier ?invalidIco
+WHERE {
+  {
+    SELECT ?identifier ?ico
+    WHERE {
+      ?identifier a adms:Identifier ;
+        skos:inScheme <http://linked.opendata.cz/resource/concept-scheme/CZ-ICO> ;
+        skos:notation ?ico .
+    }
+  }
+
+  BIND (REPLACE(?ico, "\\s", "") AS ?invalidIco)
+  FILTER (REGEX(?invalidIco, "^\\d{8}$"))
+  
+  BIND (xsd:integer(SUBSTR(?invalidIco, 1, 1)) AS ?firstDigit)
+  BIND (xsd:integer(SUBSTR(?invalidIco, 2, 1)) AS ?secondDigit)
+  BIND (xsd:integer(SUBSTR(?invalidIco, 3, 1)) AS ?thirdDigit)
+  BIND (xsd:integer(SUBSTR(?invalidIco, 4, 1)) AS ?fourthDigit)
+  BIND (xsd:integer(SUBSTR(?invalidIco, 5, 1)) AS ?fifthDigit)
+  BIND (xsd:integer(SUBSTR(?invalidIco, 6, 1)) AS ?sixthDigit)
+  BIND (xsd:integer(SUBSTR(?invalidIco, 7, 1)) AS ?seventhDigit)
+  BIND (xsd:integer(SUBSTR(?invalidIco, 8, 1)) AS ?eighthDigit)
+  BIND ((
+    ?firstDigit * 8 + ?secondDigit * 7 + ?thirdDigit * 6
+  + ?fourthDigit * 5 + ?fifthDigit * 4 + ?sixthDigit * 3
+  + ?seventhDigit * 2
+  ) AS ?sum)
+  BIND ((?sum - (FLOOR(?sum/11) * 11)) AS ?modulo)
+  BIND (IF(?modulo IN (0, 10), 1,
+        IF(?modulo = 1, 0, 11 - ?modulo)
+  ) AS ?checkDigit)
+  FILTER (?eighthDigit != ?checkDigit)
+}

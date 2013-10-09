@@ -1,0 +1,17 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?identifier ?invalidIco
+WHERE {
+  {
+    SELECT ?identifier ?ico
+    WHERE {
+      ?identifier a adms:Identifier ;
+        skos:inScheme <http://linked.opendata.cz/resource/concept-scheme/CZ-ICO> ;
+        skos:notation ?ico .
+    }
+  }
+
+  BIND (REPLACE(?ico, "\\s", "") AS ?invalidIco)
+  FILTER (!REGEX(?invalidIco, "^\\d{8}$"))
+}
