@@ -24,7 +24,8 @@
     -->
     
     <xsl:param name="namespace">http://linked.opendata.cz/resource/</xsl:param>
-    <xsl:variable name="baseURI" select="concat($namespace, 'wwwinfo.mfcr.cz/ares/')"/>
+	<xsl:variable name="beURIprefix">http://linked.opendata.cz/resource/business-entity/</xsl:variable>
+    <xsl:variable name="baseURI" select="concat($namespace, 'domain/ares/')"/>
     <xsl:variable name="icoScheme" select="concat($namespace, 'concept-scheme/CZ-ICO')"/>
     <xsl:strip-space elements="*"/>
     
@@ -39,13 +40,13 @@
     <xsl:function name="f:icoBasedURI" as="xs:anyURI">
         <xsl:param name="ico" as="xs:string"/>
         <xsl:param name="fragment" as="xs:string"/>
-        <xsl:value-of select="concat(f:classURI('Business entity', normalize-space($ico)), '/', normalize-space($fragment))"/>
+        <xsl:value-of select="concat($beURIprefix, normalize-space($ico), '/', normalize-space($fragment))"/>
     </xsl:function>
     
     <xsl:function name="f:icoBasedAddressURI" as="xs:anyURI">
         <xsl:param name="ico" as="xs:string"/>
         <xsl:param name="context" as="node()"/>
-        <xsl:value-of select="f:icoBasedURI(normalize-space($ico), concat('postal-address/', generate-id($context)))"/>
+        <xsl:value-of select="f:icoBasedURI(normalize-space($ico), concat('postal-address/', $context/local-name()))"/>
     </xsl:function>
     
     <xsl:function name="f:pathIdURIWithICOFallback" as="xs:anyURI">
@@ -58,7 +59,7 @@
                 <xsl:value-of select="f:pathIdURI($path, normalize-space($id))"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="f:icoBasedURI($ico, concat($path, '/', generate-id($context)))"/>
+                <xsl:value-of select="f:icoBasedURI($ico, concat($path, '/', $context/local-name()))"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -185,7 +186,7 @@
     <!-- Templates for linked resources -->
     
     <xsl:template mode="linked" match="d:ico">
-        <adms:Identifier rdf:about="{f:classURI('Identifier', f:prefixICO(text()))}">
+        <adms:Identifier rdf:about="{f:classURI('Identifier', f:prefixICO(normalize-space(text())))}">
             <skos:notation><xsl:value-of select="normalize-space(text())"/></skos:notation>
             <skos:inScheme rdf:resource="{$icoScheme}"/>
             <adms:schemeAgency xml:lang="cs">Český statistický úřad</adms:schemeAgency>
@@ -282,7 +283,7 @@
     </xsl:template>
     
     <xsl:template mode="linked" match="d:nace[d:nace]">
-		<xsl:apply-templates/>
+		<xsl:apply-templates mode="linked"/>
     </xsl:template>
 
     <xsl:template mode="linked" match="d:nace[not(d:nace)]">
