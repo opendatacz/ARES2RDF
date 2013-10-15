@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<are:ares_odpovedi xmlns:are="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3" xmlns:d="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_datatypes/v_1.0.3" xmlns:u="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/uvis_datatypes/v_1.0.3" odpoved_datum_cas="2013-09-18T23:57:19" odpoved_pocet="1" odpoved_typ="Vypis_OR" vystup_format="XML" xslt="klient" validation_xslt="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_odpovedi.xsl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3 http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3/ares_answer_or_v_1.0.3.xsd" id="ares">
+	<are:odpoved>
+		<d:pid> 0 </d:pid>
+		<d:vh>
+			<d:k> 1 </d:k>
+		</d:vh>
+		<d:pza> 1 </d:pza>
+		<d:vypis_or>
+			<d:uvod>
+				<d:nd> Výpis z dat Obchodního Rejstříku v ARES </d:nd>
+				<d:adb> 2013-09-17 </d:adb>
+				<d:dvy> 2013-09-18 </d:dvy>
+				<d:cas> 23:57:25 </d:cas>
+				<d:tv> aktualni </d:tv>
+				<d:typ_odkazu> 0 </d:typ_odkazu>
+			</d:uvod>
+			<d:zau>
+				<d:pod> 2013-06-25 </d:pod>
+				<d:s>
+					<d:ssu> Aktivní </d:ssu>
+					<d:kkz>
+						<d:k> 0 </d:k>
+					</d:kkz>
+					<d:vy>
+						<d:k> 0 </d:k>
+					</d:vy>
+					<d:zam>
+						<d:k> 0 </d:k>
+					</d:zam>
+					<d:li>
+						<d:k> 0 </d:k>
+					</d:li>
+				</d:s>
+				<d:ico> 46678468 </d:ico>
+				<d:of> HOCHTIEF CZ a. s. </d:of>
+				<d:pfo>
+					<d:kpf> 121 </d:kpf>
+					<d:npf> Akciová společnost </d:npf>
+					<d:pfo> P </d:pfo>
+					<d:tzu> Tuzemská </d:tzu>
+				</d:pfo>
+				<d:si>
+					<d:ida> 29811493 </d:ida>
+					<d:ks> 203 </d:ks>
+					<d:n> Praha 5 </d:n>
+					<d:nu> Plzeňská </d:nu>
+					<d:ca> 16/3217 </d:ca>
+					<d:psc> 15000 </d:psc>
+				</d:si>
+				<d:dzor> 1992-05-01 </d:dzor>
+			</d:zau>
+			<d:reg>
+				<d:sz>
+					<d:sd>
+						<d:k> 1 </d:k>
+						<d:t> Městský soud v Praze </d:t>
+					</d:sd>
+					<d:ov> B 6229 </d:ov>
+				</d:sz>
+			</d:reg>
+			<d:cin>
+				<d:pp>
+					<d:t> provádění staveb, jejich změn a odstraňování </d:t>
+					<d:t> projektová činnost ve výstavbě </d:t>
+					<d:t> montáž, opravy, revize a zkoušky elektrických zařízení </d:t>
+					<d:t> výroba, instalace, opravy elektrických strojů a přístrojů, elektronických a telekomunikačních zařízení </d:t>
+					<d:t> montáž, opravy, revize a zkoušky zdvihacích zařízení </d:t>
+					<d:t> výkon zeměměřických činností </d:t>
+					<d:t> činnost účetních poradců, vedení účetnictví, vedení daňové evidence </d:t>
+					<d:t> provádění trhacích a ohňostrojných prací </d:t>
+					<d:t> podnikání v oblasti nakládání s nebezpečnými odpady </d:t>
+					<d:t> opravy ostatních dopravních prostředků a pracovních strojů </d:t>
+					<d:t> opravy silničních vozidel </d:t>
+					<d:t> geologické práce </d:t>
+					<d:t> poskytování technických služeb k ochraně majetku a osob </d:t>
+					<d:t> silniční motorová doprava - nákladní vnitrostátní provozovaná vozidly o největší povolené hmotnosti nad 3,5 tuny, - nákladní mezinárodní provozovaná vozidly o největší povolené hmotnosti nad 3,5 tuny, - vnitrostátní příležitostná osobní, - mezinárodní příležitostná osobní </d:t>
+					<d:t> montáž, opravy a rekonstrukce chladících zařízení a tepelných čerpadel </d:t>
+					<d:t> zámečnictví, nástrojářství </d:t>
+					<d:t> výroba, obchod a služby neuvedené v přílohách 1 až 3 živnostenského zákona </d:t>
+					<d:t> montáž, opravy, revize a zkoušky plynových zařízení a plnění nádob plyny </d:t>
+					<d:t> poskytování služeb v oblasti bezpečnosti a ochrany zdraví při práci </d:t>
+					<d:t> hornická činnost a činnost prováděná hornickým způsobem v rozsahu platného oprávnění </d:t>
+				</d:pp>
+			</d:cin>
+			<d:osk>
+				<d:t> Na VSB a.s. se sídlem Praha 8, Primátorská 36, IČ46678468 bylo převedeno na základě fúze jmění právnických osob: VSB divize 1 s.r.o. se sídlem Okružní 544, České Budějovice, IČ60849801, VSB divize 3 s.r.o. se sídlem Temelín-elektrárna, IČ60646683 VSB divize 8 s.r.o. se sídlem Konšelská 19/323, Praha 8,IČ62501941, VSB divize 9 s.r.o. se sídlem Okružní 544, České Budějovice, IČ62496891, VSB divize 11 s.r.o. se sídlem Jablonského 30, Plzeň 2, IČ25206231 </d:t>
+			</d:osk>
+			<d:osk>
+				<d:t> Dne 2.9.2005 přijala mimořádná valná hromada společnosti usnesení dle § 183i a násl. zák. 513/1991 Sb. kterým byl schválen přechod akcií společnosti, které nejsou vlastnictvím hlavního akcionáře, společnosti HOCHTIEF Aktiengesselschaft, se sídlem Opernplatz 2, 45128 Essen, Spolková republika Německo do jeho vlastnictví a to za protiplnění ve výši 3.491,- Kč za jednu akcii, které bude vyplaceno ostatním akcionářům ve lhůtě 6 týdnů od zápisu vlastnického práva k převáděným akciím ve prospěch hlavního akcionáře. </d:t>
+			</d:osk>
+			<d:osk>
+				<d:t> Zakladatel splatil 100% základního jmění společnosti, které je představováno cenou vkládaného hmotného a dalšího majetku uvedeného v zakladatelské listině. Ocenění tohoto majetku je obsaženo ve schváleném privatizačním projektu státního podniku Vodní Stavby Temelín s.p. </d:t>
+			</d:osk>
+			<d:osk>
+				<d:t> Založení společnosti: Akciová společnost byla založena podle § 172 obchodního zákoníku. Jediným zakladatelem společnosti je Fond národního majetku České republiky, se sídlem v Praze 1, Gorkého ná. 32, na který přešel majetek státního podniku ve smyslu § 11 odst. 3 zák. č. 92/1991 Sb., o převodu majetku státu na jiné osoby. </d:t>
+			</d:osk>
+			<d:kap>
+				<d:za>
+					<d:vk>
+						<d:kc> 350736100.00 </d:kc>
+					</d:vk>
+					<d:spl>
+						<d:kc> 350736100.00 </d:kc>
+					</d:spl>
+				</d:za>
+				<d:akcie>
+					<d:em>
+						<d:da> Akcie na jméno </d:da>
+						<d:h> 1300.00 </d:h>
+						<d:pocet> 269797 </d:pocet>
+						<d:pd> v listinné podobě </d:pd>
+					</d:em>
+				</d:akcie>
+			</d:kap>
+			<d:sop>
+				<d:csp>
+					<d:c>
+						<d:kan> 29 </d:kan>
+						<d:f> předseda představenstva </d:f>
+						<d:fo>
+							<d:tp> Ing. </d:tp>
+							<d:j> Tomáš </d:j>
+							<d:p> Bílek </d:p>
+							<d:dn> 1962-11-05 </d:dn>
+							<d:b>
+								<d:ida> 29811527 </d:ida>
+								<d:ks> 203 </d:ks>
+								<d:n> Praha 5 </d:n>
+								<d:nu> K Brance </d:nu>
+								<d:ca> 19 </d:ca>
+								<d:psc> 15000 </d:psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2005-09-01 </d:dza>
+						</d:cle>
+						<d:vf>
+							<d:dza> 2010-09-01 </d:dza>
+						</d:vf>
+					</d:c>
+				</d:csp>
+				<d:csp>
+					<d:c>
+						<d:kan> 29 </d:kan>
+						<d:f> člen </d:f>
+						<d:fo>
+							<d:j> JÖRG </d:j>
+							<d:p> MATHEW </d:p>
+							<d:dn> 1964-10-06 </d:dn>
+							<d:b>
+								<d:ida> 29811529 </d:ida>
+								<d:ks> 276 </d:ks>
+								<d:ns> Spolková republika Německo </d:ns>
+								<d:n> Gladbeck </d:n>
+								<d:nu> Hölderlinestrasse </d:nu>
+								<d:zahr_psc> 45964 </d:zahr_psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2013-03-01 </d:dza>
+						</d:cle>
+					</d:c>
+				</d:csp>
+				<d:t> Jménem společnosti jedná vůči třetím osobám, před soudy a před jinými orgány v celém rozsahu představenstvo. Každý člen představenstva jedná jménem společnosti samostatně. Za společnost podepisují osoby pověřené jednáním za představenstvo. Činí tak způsobem, že k názvu společnosti či otisku razítka společnosti připojí svůj podpis. </d:t>
+			</d:sop>
+			<d:pro>
+				<d:t> V rámci prokury jednají a podepisují za společnost vždy dva prokuristi společně. Činí tak způsobem, že k názvu společnosti či otisku razítka společnosti připojí dodatek označující prokuru a svůj podpis. </d:t>
+			</d:pro>
+			<d:dr>
+				<d:cdr>
+					<d:c>
+						<d:kan> 4 </d:kan>
+						<d:f> předseda dozorčí rady </d:f>
+						<d:fo>
+							<d:j> ROBERTO </d:j>
+							<d:p> SIMONI </d:p>
+							<d:dn> 1967-10-15 </d:dn>
+							<d:b>
+								<d:ida> 29811566 </d:ida>
+								<d:ks> 380 </d:ks>
+								<d:ns> Italská republika </d:ns>
+								<d:n> Montagne </d:n>
+								<d:nu> Via Coe </d:nu>
+								<d:zahr_psc> 38070 </d:zahr_psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2013-03-01 </d:dza>
+						</d:cle>
+						<d:vf>
+							<d:dza> 2013-03-01 </d:dza>
+						</d:vf>
+					</d:c>
+				</d:cdr>
+				<d:cdr>
+					<d:c>
+						<d:kan> 4 </d:kan>
+						<d:f> člen </d:f>
+						<d:fo>
+							<d:j> Wolfgang </d:j>
+							<d:p> Reining </d:p>
+							<d:dn> 1960-05-10 </d:dn>
+							<d:b>
+								<d:ida> 29811564 </d:ida>
+								<d:ks> 276 </d:ks>
+								<d:ns> Spolková republika Německo </d:ns>
+								<d:n> Essen </d:n>
+								<d:nu> Ernestinen Strasse 187 </d:nu>
+								<d:zahr_psc> 45139 </d:zahr_psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2012-09-04 </d:dza>
+						</d:cle>
+						<d:vf>
+							<d:dza> 2012-09-04 </d:dza>
+						</d:vf>
+					</d:c>
+				</d:cdr>
+				<d:cdr>
+					<d:c>
+						<d:kan> 4 </d:kan>
+						<d:f> člen dozorčí rady </d:f>
+						<d:fo>
+							<d:j> Martin </d:j>
+							<d:p> Beneš </d:p>
+							<d:dn> 1967-02-26 </d:dn>
+							<d:b>
+								<d:ida> 29811560 </d:ida>
+								<d:ks> 203 </d:ks>
+								<d:n> Homole </d:n>
+								<d:nu> V Sadu </d:nu>
+								<d:cd> 288 </d:cd>
+								<d:tcd> 1 </d:tcd>
+								<d:psc> 37001 </d:psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2010-05-02 </d:dza>
+						</d:cle>
+					</d:c>
+				</d:cdr>
+			</d:dr>
+			<d:aki>
+				<d:akr>
+					<d:kan> 5 </d:kan>
+					<d:po>
+						<d:of> HOCHTIEF Construction Erste Vermögensverwaltungsgesellschaft mbH </d:of>
+						<d:si>
+							<d:ida> 29811570 </d:ida>
+							<d:ks> 276 </d:ks>
+							<d:ns> Spolková republika Německo </d:ns>
+							<d:n> Essen </d:n>
+							<d:nu> Opernplatz </d:nu>
+							<d:ca> 2 </d:ca>
+							<d:zahr_psc> 45128 </d:zahr_psc>
+						</d:si>
+					</d:po>
+					<d:t> Rejstříkové číslo: HRB 20456 </d:t>
+				</d:akr>
+			</d:aki>
+		</d:vypis_or>
+	</are:odpoved>
+</are:ares_odpovedi>

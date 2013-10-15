@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<are:ares_odpovedi xmlns:are="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3" xmlns:d="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_datatypes/v_1.0.3" xmlns:u="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/uvis_datatypes/v_1.0.3" odpoved_datum_cas="2013-09-19T00:29:51" odpoved_pocet="1" odpoved_typ="Vypis_OR" vystup_format="XML" xslt="klient" validation_xslt="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_odpovedi.xsl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3 http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3/ares_answer_or_v_1.0.3.xsd" id="ares">
+	<are:odpoved>
+		<d:pid> 0 </d:pid>
+		<d:vh>
+			<d:k> 1 </d:k>
+		</d:vh>
+		<d:pza> 1 </d:pza>
+		<d:vypis_or>
+			<d:uvod>
+				<d:nd> Výpis z dat Obchodního Rejstříku v ARES </d:nd>
+				<d:adb> 2013-09-17 </d:adb>
+				<d:dvy> 2013-09-19 </d:dvy>
+				<d:cas> 00:29:53 </d:cas>
+				<d:tv> aktualni </d:tv>
+				<d:typ_odkazu> 0 </d:typ_odkazu>
+			</d:uvod>
+			<d:zau>
+				<d:pod> 2011-05-03 </d:pod>
+				<d:s>
+					<d:ssu> Aktivní </d:ssu>
+					<d:kkz>
+						<d:k> 0 </d:k>
+					</d:kkz>
+					<d:vy>
+						<d:k> 0 </d:k>
+					</d:vy>
+					<d:zam>
+						<d:k> 0 </d:k>
+					</d:zam>
+					<d:li>
+						<d:k> 0 </d:k>
+					</d:li>
+				</d:s>
+				<d:ico> 26244918 </d:ico>
+				<d:of> PS PROFI s.r.o. </d:of>
+				<d:pfo>
+					<d:kpf> 112 </d:kpf>
+					<d:npf> Společnost s ručením omezeným </d:npf>
+					<d:pfo> P </d:pfo>
+					<d:tzu> Tuzemská </d:tzu>
+				</d:pfo>
+				<d:si>
+					<d:ida> 22716171 </d:ida>
+					<d:ks> 203 </d:ks>
+					<d:nok> Brno-město </d:nok>
+					<d:n> Brno </d:n>
+					<d:nu> Stará </d:nu>
+					<d:ca> 856/5 </d:ca>
+					<d:psc> 60200 </d:psc>
+				</d:si>
+				<d:dzor> 2001-04-18 </d:dzor>
+			</d:zau>
+			<d:reg>
+				<d:sz>
+					<d:sd>
+						<d:k> 7 </d:k>
+						<d:t> Krajský soud v Brně </d:t>
+					</d:sd>
+					<d:ov> C 39257 </d:ov>
+				</d:sz>
+			</d:reg>
+			<d:cin>
+				<d:pp>
+					<d:t> provádění staveb, jejich změn a odstraňování </d:t>
+					<d:t> zámečnictví, nástrojářství </d:t>
+					<d:t> projektová činnost ve výstavbě </d:t>
+					<d:t> výroba, obchod a služby neuvedené v přílohách 1 až 3 živnostenského zákona </d:t>
+					<d:t> podnikání v oblasti nakládání s nebezpečnými odpady </d:t>
+				</d:pp>
+			</d:cin>
+			<d:kap>
+				<d:za>
+					<d:vk>
+						<d:kc> 4452000 </d:kc>
+					</d:vk>
+				</d:za>
+			</d:kap>
+			<d:so>
+				<d:cso>
+					<d:c>
+						<d:kan> 1 </d:kan>
+						<d:f> jednatel </d:f>
+						<d:fo>
+							<d:j> Jaroslav </d:j>
+							<d:p> Knotek </d:p>
+							<d:dn> 1956-03-10 </d:dn>
+							<d:b>
+								<d:ida> 22716174 </d:ida>
+								<d:ks> 203 </d:ks>
+								<d:nok> Brno-město </d:nok>
+								<d:n> Brno </d:n>
+								<d:nu> Nové Sady </d:nu>
+								<d:ca> 34 </d:ca>
+								<d:psc> 60200 </d:psc>
+							</d:b>
+						</d:fo>
+						<d:vf>
+							<d:dza> 2001-04-18 </d:dza>
+						</d:vf>
+					</d:c>
+				</d:cso>
+				<d:t> Způsob zastupování: za společnost jedná a podepisuje jednatel nebo prokurista. </d:t>
+			</d:so>
+			<d:pro>
+				<d:pra>
+					<d:kan> 3 </d:kan>
+					<d:fo>
+						<d:tp> ing. </d:tp>
+						<d:j> Radek </d:j>
+						<d:p> Jančar </d:p>
+						<d:dn> 1969-03-31 </d:dn>
+						<d:b>
+							<d:ida> 22716175 </d:ida>
+							<d:ks> 203 </d:ks>
+							<d:nok> Brno-město </d:nok>
+							<d:n> Brno </d:n>
+							<d:nu> Srbská </d:nu>
+							<d:ca> 49 </d:ca>
+							<d:psc> 61200 </d:psc>
+						</d:b>
+					</d:fo>
+				</d:pra>
+			</d:pro>
+			<d:ssv>
+				<d:ss>
+					<d:kan> 8 </d:kan>
+					<d:fo>
+						<d:j> Jaroslav </d:j>
+						<d:p> Knotek </d:p>
+						<d:dn> 1956-03-10 </d:dn>
+						<d:b>
+							<d:ida> 22716177 </d:ida>
+							<d:ks> 203 </d:ks>
+							<d:nok> Brno-město </d:nok>
+							<d:n> Brno </d:n>
+							<d:nu> Nové Sady </d:nu>
+							<d:ca> 34 </d:ca>
+							<d:psc> 60200 </d:psc>
+						</d:b>
+					</d:fo>
+					<d:vks>
+						<d:vk>
+							<d:kc> 4432000 </d:kc>
+						</d:vk>
+						<d:spl>
+							<d:kc> 4432000 </d:kc>
+						</d:spl>
+						<d:op>
+							<d:t> 4432/4452 </d:t>
+						</d:op>
+					</d:vks>
+				</d:ss>
+				<d:ss>
+					<d:kan> 8 </d:kan>
+					<d:fo>
+						<d:tp> Ing. </d:tp>
+						<d:j> Jana </d:j>
+						<d:p> Knotková </d:p>
+						<d:dn> 1982-05-03 </d:dn>
+						<d:b>
+							<d:ida> 22716179 </d:ida>
+							<d:ks> 203 </d:ks>
+							<d:n> Brno </d:n>
+							<d:nu> Traubova </d:nu>
+							<d:ca> 1546/6 </d:ca>
+							<d:psc> 60200 </d:psc>
+						</d:b>
+					</d:fo>
+					<d:vks>
+						<d:vk>
+							<d:kc> 20000 </d:kc>
+						</d:vk>
+						<d:spl>
+							<d:kc> 20000 </d:kc>
+						</d:spl>
+						<d:op>
+							<d:t> 20/4452 </d:t>
+						</d:op>
+					</d:vks>
+				</d:ss>
+			</d:ssv>
+		</d:vypis_or>
+	</are:odpoved>
+</are:ares_odpovedi>

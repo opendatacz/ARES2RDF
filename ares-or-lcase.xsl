@@ -33,38 +33,158 @@
     <xsl:variable name="podobaAkcieScheme">concept-scheme/podoba-akcie</xsl:variable>
     <xsl:variable name="funkceVPredstavenstvuScheme">concept-scheme/funkce-v-predstavenstvu</xsl:variable>
     <xsl:variable name="funkceVDozorciRadeScheme">concept-scheme/funkce-v-dozorci-rade</xsl:variable>
+    <xsl:variable name="funkceVStatutarnimOrganuScheme">concept-scheme/funkce-v-statutarnim-organu</xsl:variable>
     <xsl:variable name="kodAngmScheme">concept-scheme/kod-angm</xsl:variable>
     <xsl:strip-space elements="*"/>
     
     <xsl:output encoding="UTF-8" indent="yes" method="xml" normalization-form="NFC"/>
     
+	<xsl:function name="f:getClenJmenoURIpart" as="xs:string">
+		<xsl:param name="context" as="node()"/>
+		<xsl:if test="$context/d:fo">
+			<xsl:value-of select="encode-for-uri(
+						lower-case(
+							concat(
+								if ($context/d:fo/d:tp) then 
+									concat(normalize-space($context/d:fo/d:tp/text()), '-') 
+								else '', 
+								if ($context/d:fo/d:ot) then 
+									normalize-space($context/d:fo/d:ot) 
+								else 
+									concat(
+										normalize-space($context/d:fo/d:p/text()),
+										'-', 
+										normalize-space($context/d:fo/d:j/text())
+									)
+								)
+							)
+						)
+			"/>
+		</xsl:if>
+		<xsl:if test="$context/d:po/d:ico">
+			<xsl:value-of select="normalize-space($context/d:po/d:ico/text())"/>
+		</xsl:if>
+		<xsl:if test="$context/d:po and not ($context/d:po/d:ico)">
+			<xsl:value-of select="encode-for-uri(lower-case(normalize-space($context/d:po/d:of/text())))"/>
+		</xsl:if>
+	</xsl:function>
+
 	<xsl:function name="f:getClenURI" as="xs:anyURI">
 		<xsl:param name="context" as="node()"/>
-		<xsl:value-of select="f:pathIdURI(concat('person/',normalize-space($context/d:c/d:fo/d:dn/text())), encode-for-uri(lower-case(concat(if($context/d:c/d:fo/d:tp) then concat(normalize-space($context/d:c/d:fo/d:tp/text()), '-') else '', normalize-space($context/d:c/d:fo/d:p/text()), '-', normalize-space($context/d:c/d:fo/d:j/text())))))"/>
+		<xsl:if test="$context/d:fo">
+			<xsl:value-of select="f:pathIdURI(
+					concat('person/',
+					normalize-space($context/d:fo/d:dn/text())), 
+					f:getClenJmenoURIpart($context))"/>
+		</xsl:if>
+		<xsl:if test="$context/d:po">
+			<xsl:value-of select="f:pathIdURI(
+					'business-entity',
+					f:getClenJmenoURIpart($context))"/>
+		</xsl:if>
 	</xsl:function>
     
 	<xsl:function name="f:getClenstviVPredstavenstvuURI" as="xs:anyURI">
 		<xsl:param name="ico" as="xs:string"/>
 		<xsl:param name="context" as="node()"/>
-		<xsl:value-of select="f:icoBasedDomainURI(concat($ico,'/clenstvi-v-predstavenstvu',normalize-space($context/d:c/d:fo/d:dn/text())), encode-for-uri(lower-case(concat(if($context/d:c/d:fo/d:tp) then concat(normalize-space($context/d:c/d:fo/d:tp/text()), '-') else '', normalize-space($context/d:c/d:fo/d:p/text()), '-', normalize-space($context/d:c/d:fo/d:j/text())))))"/>
+		<xsl:value-of select="f:getClenstviURI($ico, 'clenstvi-v-predstavenstvu', $context)"/>
+	</xsl:function>
+
+	<xsl:function name="f:getPOURI" as="xs:anyURI">
+		<xsl:param name="context" as="node()"/>
+		<xsl:value-of select="if ($context/d:ico) then f:icoBasedURI(normalize-space($context/d:ico/text()),'') else f:pathURI(
+				concat('business-entity',
+							'/',
+							encode-for-uri(
+								lower-case(
+									normalize-space($context/d:of/text())
+								)
+							)
+						)
+				)"/>
+	</xsl:function>
+
+	<xsl:function name="f:getProkuraURI" as="xs:anyURI">
+		<xsl:param name="ico" as="xs:string"/>
+		<xsl:param name="context" as="node()"/>
+		<xsl:value-of select="f:icoBasedDomainURI($ico,'prokura')"/>
+	</xsl:function>
+
+	<xsl:function name="f:getClenstviURI" as="xs:anyURI">
+		<xsl:param name="ico" as="xs:string"/>
+		<xsl:param name="clenstvi" as="xs:string"/>
+		<xsl:param name="context" as="node()"/>
+		<xsl:value-of select="f:icoBasedDomainURI(
+				concat($ico,
+							'/',$clenstvi,
+							if ($context/d:fo) then concat('/',normalize-space($context/d:fo/d:dn/text())) else ''),  
+							f:getClenJmenoURIpart($context)
+						)"/>
 	</xsl:function>
 
 	<xsl:function name="f:getClenstviVDozorciRadeURI" as="xs:anyURI">
 		<xsl:param name="ico" as="xs:string"/>
 		<xsl:param name="context" as="node()"/>
-		<xsl:value-of select="f:icoBasedDomainURI(concat($ico,'/clenstvi-v-dozorci-rade',normalize-space($context/d:c/d:fo/d:dn/text())),  encode-for-uri(lower-case(concat(if($context/d:c/d:fo/d:tp) then concat(normalize-space($context/d:c/d:fo/d:tp/text()), '-') else '', normalize-space($context/d:c/d:fo/d:p/text()), '-', normalize-space($context/d:c/d:fo/d:j/text())))))"/>
+		<xsl:value-of select="f:getClenstviURI($ico, 'clenstvi-v-dozorci-rade', $context)"/>
+	</xsl:function>
+
+	<xsl:function name="f:getClenstviVStatutarnimOrganuURI" as="xs:anyURI">
+		<xsl:param name="ico" as="xs:string"/>
+		<xsl:param name="context" as="node()"/>
+		<xsl:value-of select="f:getClenstviURI($ico, 'clenstvi-v-statutarnim-organu', $context)"/>
+	</xsl:function>
+
+	<xsl:function name="f:getAkcionarstviURI" as="xs:anyURI">
+		<xsl:param name="ico" as="xs:string"/>
+		<xsl:param name="context" as="node()"/>
+		<xsl:value-of select="f:getClenstviURI($ico, 'akcionarstvi', $context)"/>
+	</xsl:function>
+
+	<xsl:function name="f:getSpolecnictviSVklademURI" as="xs:anyURI">
+		<xsl:param name="ico" as="xs:string"/>
+		<xsl:param name="context" as="node()"/>
+		<xsl:value-of select="f:getClenstviURI($ico, 'spolecnictvi-s-vkladem', $context)"/>
 	</xsl:function>
 
 	<xsl:function name="f:getZastavaniFunkceVPredstavenstvuURI" as="xs:anyURI">
 		<xsl:param name="ico" as="xs:string"/>
 		<xsl:param name="context" as="node()"/>
-		<xsl:value-of select="f:icoBasedDomainURI(concat($ico,'/zastavani-funkce-v-predstavenstvu/', normalize-space($context/d:c/d:fo/d:dn/text())),  encode-for-uri(lower-case(concat(if($context/d:c/d:fo/d:tp) then concat(normalize-space($context/d:c/d:fo/d:tp/text()), '-') else '', normalize-space($context/d:c/d:fo/d:p/text()), '-', normalize-space($context/d:c/d:fo/d:j/text()), '/',if ($context/d:c/d:vf/d:dza) then concat('/', normalize-space($context/d:c/d:vf/d:dza/text())) else ''))))"/>
+		<xsl:value-of select="f:getZastavaniFunkceURI($ico, 'zastavani-funkce-v-predstavenstvu', $context)"/>
 	</xsl:function>
 
 	<xsl:function name="f:getZastavaniFunkceVDozorciRadeURI" as="xs:anyURI">
 		<xsl:param name="ico" as="xs:string"/>
 		<xsl:param name="context" as="node()"/>
-		<xsl:value-of select="f:icoBasedDomainURI(concat($ico,'/zastavani-funkce-v-dozorci-rade/',normalize-space($context/d:c/d:fo/d:dn/text())),  encode-for-uri(lower-case(concat(if($context/d:c/d:fo/d:tp) then concat(normalize-space($context/d:c/d:fo/d:tp/text()), '-') else '', normalize-space($context/d:c/d:fo/d:p/text()), '-', normalize-space($context/d:c/d:fo/d:j/text()), if ($context/d:c/d:vf/d:dza) then concat('/', normalize-space($context/d:c/d:vf/d:dza/text())) else ''))))"/>
+		<xsl:value-of select="f:getZastavaniFunkceURI($ico, 'zastavani-funkce-v-dozorci-rade', $context)"/>
+	</xsl:function>
+
+	<xsl:function name="f:getVkladSpolecnikaURI" as="xs:anyURI">
+		<xsl:param name="ico" as="xs:string"/>
+		<xsl:param name="context" as="node()"/>
+		<xsl:value-of select="f:getZastavaniFunkceURI($ico, 'vklad-spolecnika', $context)"/>
+	</xsl:function>
+
+	<xsl:function name="f:getZastavaniFunkceVStatutarnimOrganuURI" as="xs:anyURI">
+		<xsl:param name="ico" as="xs:string"/>
+		<xsl:param name="context" as="node()"/>
+		<xsl:value-of select="f:getZastavaniFunkceURI($ico, 'zastavani-funkce-v-statutarnim-organu', $context)"/>
+	</xsl:function>
+
+	<xsl:function name="f:getZastavaniFunkceURI" as="xs:anyURI">
+		<xsl:param name="ico" as="xs:string"/>
+		<xsl:param name="funkce" as="xs:string"/>
+		<xsl:param name="context" as="node()"/>
+		<xsl:value-of select="f:icoBasedDomainURI(
+				concat($ico,
+							'/',$funkce,'/', 
+							if ($context/d:fo) then normalize-space($context/d:fo/d:dn/text()) else ''),  
+							concat(
+								f:getClenJmenoURIpart($context), 
+								if ($context/d:vf/d:dza) then 
+									concat('/', normalize-space($context/d:vf/d:dza/text())) 
+								else ''
+							)
+						)"/>
 	</xsl:function>
 
     <xsl:function name="f:classURI" as="xs:anyURI">
@@ -76,7 +196,7 @@
     <xsl:function name="f:icoBasedURI" as="xs:anyURI">
         <xsl:param name="ico" as="xs:string"/>
         <xsl:param name="fragment" as="xs:string"/>
-        <xsl:value-of select="concat($beURIprefix, 'CZ', normalize-space($ico), '/', normalize-space($fragment))"/>
+        <xsl:value-of select="concat($beURIprefix, 'CZ', normalize-space($ico), if (string-length($fragment) > 0) then concat('/', normalize-space($fragment)) else '')"/>
     </xsl:function>
     
     <xsl:function name="f:icoBasedDomainURI" as="xs:anyURI">
@@ -159,8 +279,9 @@
 		<xsl:param name="ico"/>
         <adms:Identifier rdf:about="{f:icoBasedURI($ico,concat('identifier/',$ico))}">
             <skos:notation><xsl:value-of select="normalize-space(text())"/></skos:notation>
+            <skos:prefLabel><xsl:value-of select="normalize-space(text())"/></skos:prefLabel>
             <skos:inScheme rdf:resource="{$icoScheme}"/>
-            <adms:schemeAgency xml:lang="cs">Český statistický úřad</adms:schemeAgency>
+            <adms:schemeAgency>Český statistický úřad</adms:schemeAgency>
             <xsl:apply-templates mode="identifier" select="../d:dv|../d:ror/d:sz/d:sd"/>
         </adms:Identifier>
     </xsl:template>
@@ -282,10 +403,39 @@
 		<!-- Statutární orgán - představenstvo -->
 		<lodares:Predstavenstvo rdf:about="{f:icoBasedDomainURI($ico, 'predstavenstvo')}">
 			<xsl:for-each select="d:csp">
-				<lodares:clen-predstavenstva rdf:resource="{f:getClenstviVPredstavenstvuURI($ico,.)}"/>
+				<lodares:clen-predstavenstva rdf:resource="{f:getClenstviVPredstavenstvuURI($ico,d:c)}"/>
 			</xsl:for-each>
 			<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(d:t/text())"/></dcterms:description>
 		</lodares:Predstavenstvo>
+
+		<xsl:apply-templates mode="linked">
+			<xsl:with-param name="ico" select="$ico"/>
+		</xsl:apply-templates>
+	</xsl:template>
+
+	<xsl:template match="d:so" mode="linked">
+		<xsl:param name="ico"/>
+		<!-- Statutární orgán -->
+		<lodares:StatutarniOrgan rdf:about="{f:icoBasedDomainURI($ico, 'statutarni-organ')}">
+			<xsl:for-each select="d:cso">
+				<lodares:clen-statutarniho-organu rdf:resource="{f:getClenstviVStatutarnimOrganuURI($ico,d:c)}"/>
+			</xsl:for-each>
+			<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(d:t/text())"/></dcterms:description>
+		</lodares:StatutarniOrgan>
+
+		<xsl:apply-templates mode="linked">
+			<xsl:with-param name="ico" select="$ico"/>
+		</xsl:apply-templates>
+	</xsl:template>
+
+	<xsl:template match="d:aki" mode="linked">
+		<xsl:param name="ico"/>
+		<!-- Statutární orgán -->
+		<lodares:Akcionari rdf:about="{f:icoBasedDomainURI($ico, 'akcionari')}">
+			<xsl:for-each select="d:akr">
+				<lodares:akcionarstvi rdf:resource="{f:getAkcionarstviURI($ico,.)}"/>
+			</xsl:for-each>
+		</lodares:Akcionari>
 
 		<xsl:apply-templates mode="linked">
 			<xsl:with-param name="ico" select="$ico"/>
@@ -298,12 +448,46 @@
 		<lodares:dozorci-rada rdf:resource="{f:icoBasedDomainURI($ico, 'dozorci-rada')}"/>
 	</xsl:template>
 
+	<xsl:template match="d:so">
+		<xsl:param name="ico"/>
+		<!-- Statutární orgán -->
+		<lodares:statutarni-organ rdf:resource="{f:icoBasedDomainURI($ico, 'statutarni-organ')}"/>
+	</xsl:template>
+
+	<xsl:template match="d:aki">
+		<xsl:param name="ico"/>
+		<!-- Akcionáři -->
+		<lodares:akcionari rdf:resource="{f:icoBasedDomainURI($ico, 'akcionari')}"/>
+	</xsl:template>
+
+	<xsl:template match="d:akr" mode="linked">
+		<xsl:param name="ico"/>
+		<!-- Akcionář -->
+		<xsl:variable name="currentURI" select="f:getAkcionarstviURI($ico,.)"/>
+		<lodares:Akcionarstvi rdf:about="{$currentURI}">
+			<lodares:akcionar rdf:resource="{f:getPOURI(d:po)}"/>
+			<xsl:if test="d:t">
+				<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(d:t/text())"/></dcterms:description>
+			</xsl:if>
+		</lodares:Akcionarstvi>
+
+		<xsl:apply-templates mode="linked">
+			<xsl:with-param name="ico" select="$ico"/>
+		</xsl:apply-templates>
+	</xsl:template>
+
+	<xsl:template match="d:ssv">
+		<xsl:param name="ico"/>
+		<!-- Statutární orgán -->
+		<lodares:spolecnici-s-vkladem rdf:resource="{f:icoBasedDomainURI($ico, 'spolecnici-s-vkladem')}"/>
+	</xsl:template>
+
 	<xsl:template match="d:dr" mode="linked">
 		<xsl:param name="ico"/>
 		<!-- Dozorčí rada -->
 		<lodares:DozorciRada rdf:about="{f:icoBasedDomainURI($ico, 'dozorci-rada')}">
 			<xsl:for-each select="d:cdr">
-				<lodares:clen-predstavenstva rdf:resource="{f:getClenstviVDozorciRadeURI($ico,.)}"/>
+				<lodares:clen-dozorci-rady rdf:resource="{f:getClenstviVDozorciRadeURI($ico,d:c)}"/>
 			</xsl:for-each>
 			<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(d:t/text())"/></dcterms:description>
 		</lodares:DozorciRada>
@@ -313,17 +497,91 @@
 		</xsl:apply-templates>
 	</xsl:template>
 
+	<xsl:template match="d:ssv" mode="linked">
+		<xsl:param name="ico"/>
+		<!-- Společníci s vkladem -->
+		<lodares:SpolecniciSVkladem rdf:about="{f:icoBasedDomainURI($ico, 'spolecnici-s-vkladem')}">
+			<xsl:for-each select="d:ss">
+				<lodares:spolecnictvi-s-vkladem rdf:resource="{f:getSpolecnictviSVklademURI($ico,.)}"/>
+			</xsl:for-each>
+		</lodares:SpolecniciSVkladem>
+
+		<xsl:apply-templates mode="linked">
+			<xsl:with-param name="ico" select="$ico"/>
+		</xsl:apply-templates>
+	</xsl:template>
+
+	<xsl:template match="d:ss" mode="linked">
+		<xsl:param name="ico"/>
+		<!-- Společnictví s vkladem -->
+		<xsl:variable name="currentURI" select="f:getSpolecnictviSVklademURI($ico,.)"/>
+		<lodares:SpolecnictviSVkladem rdf:about="{$currentURI}">
+			<xsl:if test="d:fo">
+				<lodares:spolecnik-s-vkladem rdf:resource="{f:getClenURI(.)}"/>
+			</xsl:if>
+			<xsl:if test="d:po">
+				<lodares:spolecnik-s-vkladem rdf:resource="{f:getPOURI(d:po)}"/>
+			</xsl:if>
+			<lodares:vklad rdf:resource="{$currentURI}/vklad"/>
+
+			<xsl:if test="d:vks/d:spl/d:kc">
+				<lodares:splaceno rdf:resource="{$currentURI}/splaceno"/>
+			</xsl:if>
+			<xsl:if test="d:vks/d:spl/d:prc">
+				<lodares:splaceno-procent rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"><xsl:value-of select="normalize-space(d:vks/d:spl/d:prc/text())"/></lodares:splaceno-procent>
+			</xsl:if>
+
+			<lodares:obchodni-podil-spolecnika><xsl:value-of select="normalize-space(d:vks/d:op/d:t/text())"/></lodares:obchodni-podil-spolecnika>
+		</lodares:SpolecnictviSVkladem>
+
+		<gr:PriceSpecification rdf:about="{$currentURI}/vklad">
+			<gr:hasCurrency>CZK</gr:hasCurrency>
+			<gr:hasCurrencyValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><xsl:value-of select="normalize-space(d:vks/d:vk/d:kc/text())"/></gr:hasCurrencyValue>
+		</gr:PriceSpecification>
+
+		<xsl:if test="d:vks/d:spl/d:kc">
+			<gr:PriceSpecification rdf:about="{$currentURI}/splaceno">
+				<gr:hasCurrency>CZK</gr:hasCurrency>
+				<gr:hasCurrencyValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><xsl:value-of select="normalize-space(d:vks/d:spl/d:kc/text())"/></gr:hasCurrencyValue>
+			</gr:PriceSpecification>
+		</xsl:if>
+
+		<xsl:apply-templates mode="linked">
+			<xsl:with-param name="ico" select="$ico"/>
+		</xsl:apply-templates>
+	</xsl:template>
+
+	<xsl:template match="d:cso" mode="linked">
+		<xsl:param name="ico"/>
+		<!-- Statutární orgán -->
+		<lodares:ClenstviVStatutarnimOrganu rdf:about="{f:getClenstviVStatutarnimOrganuURI($ico, d:c)}">
+			<lodares:clen-predstavenstva rdf:resource="{f:getClenURI(d:c)}"/>
+			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:cle/d:dza/text())"/></dcterms:issued>
+			<lodares:zastavani-funkce-v-statutarnim-organu rdf:resource="{f:getZastavaniFunkceVStatutarnimOrganuURI($ico, d:c)}"/>
+			<lodares:kod-angm rdf:resource="{f:pathIdURI($kodAngmScheme, normalize-space(d:c/d:kan/text()))}"/>
+		</lodares:ClenstviVStatutarnimOrganu>
+
+		<lodares:ZastavaniFunkceVStatutarnimOrganu rdf:about="{f:getZastavaniFunkceVStatutarnimOrganuURI($ico, d:c)}">
+			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:vf/d:dza/text())"/></dcterms:issued>
+			<lodares:funkce-v-statutarnim-organu rdf:resource="{f:pathIdURI($funkceVStatutarnimOrganuScheme, normalize-space(d:c/d:f/text()))}"/>
+		</lodares:ZastavaniFunkceVStatutarnimOrganu>
+
+		<xsl:apply-templates mode="linked" select="d:c/d:fo">
+			<xsl:with-param name="ico" select="$ico"/>
+		</xsl:apply-templates>
+	</xsl:template>
+
 	<xsl:template match="d:csp" mode="linked">
 		<xsl:param name="ico"/>
 		<!-- Statutární orgán - představenstvo -->
-		<lodares:ClenstviVPredstavenstvu rdf:about="{f:getClenstviVPredstavenstvuURI($ico, .)}">
-			<lodares:clen-predstavenstva rdf:resource="{f:getClenURI(.)}"/>
+		<lodares:ClenstviVPredstavenstvu rdf:about="{f:getClenstviVPredstavenstvuURI($ico, d:c)}">
+			<lodares:clen-predstavenstva rdf:resource="{f:getClenURI(d:c)}"/>
 			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:cle/d:dza/text())"/></dcterms:issued>
-			<lodares:zastavani-funkce-v-predstavenstvu rdf:resource="{f:getZastavaniFunkceVPredstavenstvuURI($ico, .)}"/>
+			<lodares:zastavani-funkce-v-predstavenstvu rdf:resource="{f:getZastavaniFunkceVPredstavenstvuURI($ico, d:c)}"/>
 			<lodares:kod-angm rdf:resource="{f:pathIdURI($kodAngmScheme, normalize-space(d:c/d:kan/text()))}"/>
 		</lodares:ClenstviVPredstavenstvu>
 
-		<lodares:ZastavaniFunkceVPredstavenstvu rdf:about="{f:getZastavaniFunkceVPredstavenstvuURI($ico, .)}">
+		<lodares:ZastavaniFunkceVPredstavenstvu rdf:about="{f:getZastavaniFunkceVPredstavenstvuURI($ico, d:c)}">
 			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:vf/d:dza/text())"/></dcterms:issued>
 			<lodares:funkce-v-predstavenstvu rdf:resource="{f:pathIdURI($funkceVPredstavenstvuScheme, normalize-space(d:c/d:f/text()))}"/>
 		</lodares:ZastavaniFunkceVPredstavenstvu>
@@ -336,14 +594,14 @@
 	<xsl:template match="d:cdr" mode="linked">
 		<xsl:param name="ico"/>
 		<!-- Dozorčí rada -->
-		<lodares:ClenstviVDozorciRade rdf:about="{f:getClenstviVDozorciRadeURI($ico, .)}">
-			<lodares:clen-predstavenstva rdf:resource="{f:getClenURI(.)}"/>
+		<lodares:ClenstviVDozorciRade rdf:about="{f:getClenstviVDozorciRadeURI($ico, d:c)}">
+			<lodares:clen-predstavenstva rdf:resource="{f:getClenURI(d:c)}"/>
 			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:cle/d:dza/text())"/></dcterms:issued>
-			<lodares:zastavani-funkce-v-predstavenstvu rdf:resource="{f:getZastavaniFunkceVDozorciRadeURI($ico, .)}"/>
+			<lodares:zastavani-funkce-v-predstavenstvu rdf:resource="{f:getZastavaniFunkceVDozorciRadeURI($ico, d:c)}"/>
 			<lodares:kod-angm rdf:resource="{f:pathIdURI($kodAngmScheme, normalize-space(d:c/d:kan/text()))}"/>
 		</lodares:ClenstviVDozorciRade>
 
-		<lodares:ZastavaniFunkceVDozorciRade rdf:about="{f:getZastavaniFunkceVDozorciRadeURI($ico, .)}">
+		<lodares:ZastavaniFunkceVDozorciRade rdf:about="{f:getZastavaniFunkceVDozorciRadeURI($ico, d:c)}">
 			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:vf/d:dza/text())"/></dcterms:issued>
 			<lodares:funkce-v-predstavenstvu rdf:resource="{f:pathIdURI($funkceVDozorciRadeScheme, normalize-space(d:c/d:f/text()))}"/>
 		</lodares:ZastavaniFunkceVDozorciRade>
@@ -353,10 +611,26 @@
 		</xsl:apply-templates>
 	</xsl:template>
 
-    <xsl:template mode="linked" match="d:fo">
-        <!-- Člen představenstva nebo dozorčí rady -->
+    <xsl:template mode="linked" match="d:po">
+        <!-- právnická osoba - např. akcionář -->
 		<xsl:param name="ico"/>
-        <foaf:Person rdf:about="{f:getClenURI(../..)}">
+        <gr:BusinessEntity rdf:about="{f:getPOURI(.)}">
+			<gr:legalName><xsl:value-of select="normalize-space(d:of/text())"/></gr:legalName>
+			<xsl:if test="d:ico">
+				<adms:identifier rdf:resource="{concat(f:getPOURI(.),'/identifier/', normalize-space(d:ico/text()))}"/>
+			</xsl:if>
+			<schema:address rdf:resource="{concat(f:getPOURI(.),'/hq-address')}"/>
+        </gr:BusinessEntity>    
+
+		<xsl:apply-templates mode="linked">
+			<xsl:with-param name="ico" select="$ico"/>
+		</xsl:apply-templates>
+    </xsl:template>
+
+    <xsl:template mode="linked" match="d:fo">
+        <!-- Člen představenstva nebo dozorčí rady nebo prokurista nebo společník s vkladem-->
+		<xsl:param name="ico"/>
+        <foaf:Person rdf:about="{f:getClenURI(..)}">
 			<foaf:familyName><xsl:value-of select="normalize-space(d:p/text())"/></foaf:familyName>
 			<foaf:givenName><xsl:value-of select="normalize-space(d:j/text())"/></foaf:givenName>
 			<foaf:dateOfBirth rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:dn/text())"/></foaf:dateOfBirth>
@@ -366,7 +640,7 @@
 			<xsl:if test="d:tz">
 				<foaf:title><xsl:value-of select="normalize-space(d:tz/text())"/></foaf:title>
 			</xsl:if>
-			<schema:address rdf:resource="{concat(f:getClenURI(../..),'/address')}"/>
+			<schema:address rdf:resource="{concat(f:getClenURI(..),'/address')}"/>
         </foaf:Person>    
 		<xsl:apply-templates mode="linked">
 			<xsl:with-param name="ico" select="$ico"/>
@@ -375,9 +649,29 @@
 
     <xsl:template mode="linked" match="d:b">
 		<xsl:param name="ico"/>
-		<schema:PostalAddress rdf:about="{concat(f:getClenURI(../../..),'/address')}">
-			<schema:streetAddress><xsl:value-of select="concat(normalize-space(d:nu/text()),' ', normalize-space(d:cd/text()))"/></schema:streetAddress>
-			<schema:addressLocality><xsl:value-of select="normalize-space(d:n/text())"/></schema:addressLocality>
+		<schema:PostalAddress rdf:about="{concat(f:getClenURI(../..),'/address')}">
+			<schema:streetAddress><xsl:value-of select="
+			concat(
+				normalize-space(d:nu/text()), 
+				if (d:ca) then 
+					concat(' ', 
+							normalize-space(d:ca/text())
+							) 
+				else '',
+				if (d:cd) then 
+						concat(' ', 
+								normalize-space(d:cd/text()),
+								if (d:co) then 
+									concat('/',
+												normalize-space(d:co/text())
+											) 
+								else ''
+								)
+				else ''
+			)
+			"/></schema:streetAddress>
+			<schema:addressLocality><xsl:value-of select="normalize-space(d:nok/text())"/></schema:addressLocality>
+			<schema:addressRegion><xsl:value-of select="normalize-space(d:n/text())"/></schema:addressRegion>
 			<xsl:if test="d:zahr_psc">
 				<schema:postalCode><xsl:value-of select="normalize-space(d:zahr_psc/text())"/></schema:postalCode>
 			</xsl:if>
@@ -423,24 +717,46 @@
         </skos:Concept>    
     </xsl:template>
 
+	<xsl:template match="d:pro" mode="linked">
+		<!-- Prokura -->
+		<xsl:param name="ico"/>
+		<lodares:Prokura rdf:about="{f:getProkuraURI($ico, .)}">
+			<xsl:apply-templates>
+				<xsl:with-param name="ico" select="$ico"/>
+			</xsl:apply-templates>
+		</lodares:Prokura>
+		<xsl:apply-templates mode="linked">
+			<xsl:with-param name="ico" select="$ico"/>
+		</xsl:apply-templates>
+	</xsl:template>
+
+	<xsl:template match="d:pra">
+		<!-- Prokurista -->
+		<xsl:param name="ico"/>
+		<lodares:prokurista rdf:resource="{f:getClenURI(.)}"/>
+	</xsl:template>
+
 	<xsl:template match="d:pro">
 		<!-- Prokura -->
 		<xsl:param name="ico"/>
-		<xsl:apply-templates mode="linked">
-			<xsl:with-param name="ico" select="$ico"/>
-		</xsl:apply-templates>
+		<xsl:if test="d:t">
+			<lodares:prokura-text xml:lang="cs"><xsl:value-of select="normalize-space(d:t/text())"/></lodares:prokura-text>
+		</xsl:if>
+		<xsl:if test="not(d:t)">
+			<xsl:for-each select="d:pra">
+				<lodares:prokura rdf:resource="{f:getProkuraURI($ico, .)}"/>
+			</xsl:for-each>
+		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="d:aki">
-		<!-- Akcionáři -->
+	<xsl:template match="d:pra" mode="linked">
+		<!-- Prokurista -->
 		<xsl:param name="ico"/>
 		<xsl:apply-templates mode="linked">
 			<xsl:with-param name="ico" select="$ico"/>
 		</xsl:apply-templates>
 	</xsl:template>
 
-    <!-- gr:BusinessEntity's properties -->
-    
     <xsl:template match="d:pp">
         <!-- Obor činnosti -->
         <xsl:param name="ico" tunnel="yes"/>
@@ -503,13 +819,47 @@
 
     <xsl:template mode="linked" match="d:si">
 		<xsl:param name="ico"/>
-		<schema:PostalAddress rdf:about="{f:icoBasedURI($ico,'hq-address')}">
-			<schema:streetAddress><xsl:value-of select="concat(normalize-space(d:nu/text()),' ', normalize-space(d:ca/text()))"/></schema:streetAddress>
-			<schema:addressLocality><xsl:value-of select="normalize-space(d:n/text())"/></schema:addressLocality>
-			<schema:postalCode><xsl:value-of select="normalize-space(d:psc/text())"/></schema:postalCode>
+		<schema:PostalAddress rdf:about="{concat(f:getPOURI(..),'/hq-address')}">
+			<xsl:if test="d:nu">
+				<schema:streetAddress><xsl:value-of select="
+				concat(
+					normalize-space(d:nu/text()), 
+					if (d:ca) then 
+						concat(' ', 
+								normalize-space(d:ca/text())
+								) 
+					else '',
+					if (d:cd) then 
+							concat(' ', 
+									normalize-space(d:cd/text()),
+									if (d:co) then 
+										concat('/',
+													normalize-space(d:co/text())
+												) 
+									else ''
+									)
+					else ''
+				)
+				"/></schema:streetAddress>
+			</xsl:if>
+			<xsl:if test="d:nok">
+				<schema:addressLocality><xsl:value-of select="normalize-space(d:nok/text())"/></schema:addressLocality>
+			</xsl:if>
+			<xsl:if test="d:n">
+				<schema:addressRegion><xsl:value-of select="normalize-space(d:n/text())"/></schema:addressRegion>
+			</xsl:if>
+			<xsl:if test="d:zahr_psc">
+				<schema:postalCode><xsl:value-of select="normalize-space(d:zahr_psc/text())"/></schema:postalCode>
+			</xsl:if>
+			<xsl:if test="d:psc">
+				<schema:postalCode><xsl:value-of select="normalize-space(d:psc/text())"/></schema:postalCode>
+			</xsl:if>
+			<xsl:if test="d:ns">
+				<schema:addressCountry><xsl:value-of select="normalize-space(d:ns/text())"/></schema:addressCountry>
+			</xsl:if>
 		</schema:PostalAddress>
     </xsl:template>
-    
+
     <xsl:template mode="linked" match="d:pfo[not(d:pfo)]">
         <!-- Právní forma -->
         <xsl:variable name="schemePath">concept-scheme/organization-types</xsl:variable>

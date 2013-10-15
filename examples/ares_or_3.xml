@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<are:ares_odpovedi xmlns:are="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3" xmlns:d="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_datatypes/v_1.0.3" xmlns:u="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/uvis_datatypes/v_1.0.3" odpoved_datum_cas="2013-09-19T00:23:00" odpoved_pocet="1" odpoved_typ="Vypis_OR" vystup_format="XML" xslt="klient" validation_xslt="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_odpovedi.xsl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3 http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_or/v_1.0.3/ares_answer_or_v_1.0.3.xsd" id="ares">
+	<are:odpoved>
+		<d:pid> 0 </d:pid>
+		<d:vh>
+			<d:k> 1 </d:k>
+		</d:vh>
+		<d:pza> 1 </d:pza>
+		<d:vypis_or>
+			<d:uvod>
+				<d:nd> Výpis z dat Obchodního Rejstříku v ARES </d:nd>
+				<d:adb> 2013-09-17 </d:adb>
+				<d:dvy> 2013-09-19 </d:dvy>
+				<d:cas> 00:23:02 </d:cas>
+				<d:tv> aktualni </d:tv>
+				<d:typ_odkazu> 0 </d:typ_odkazu>
+			</d:uvod>
+			<d:zau>
+				<d:pod> 2013-07-03 </d:pod>
+				<d:s>
+					<d:ssu> Aktivní </d:ssu>
+					<d:kkz>
+						<d:k> 0 </d:k>
+					</d:kkz>
+					<d:vy>
+						<d:k> 0 </d:k>
+					</d:vy>
+					<d:zam>
+						<d:k> 0 </d:k>
+					</d:zam>
+					<d:li>
+						<d:k> 0 </d:k>
+					</d:li>
+				</d:s>
+				<d:ico> 28207505 </d:ico>
+				<d:of> CTS - servis, a.s. </d:of>
+				<d:pfo>
+					<d:kpf> 121 </d:kpf>
+					<d:npf> Akciová společnost </d:npf>
+					<d:pfo> P </d:pfo>
+					<d:tzu> Tuzemská </d:tzu>
+				</d:pfo>
+				<d:si>
+					<d:ida> 29945241 </d:ida>
+					<d:ks> 203 </d:ks>
+					<d:n> Poděbrady </d:n>
+					<d:nco> Okřínek </d:nco>
+					<d:ca> 53 </d:ca>
+					<d:psc> 29001 </d:psc>
+				</d:si>
+				<d:dzor> 2007-12-12 </d:dzor>
+			</d:zau>
+			<d:reg>
+				<d:sz>
+					<d:sd>
+						<d:k> 1 </d:k>
+						<d:t> Městský soud v Praze </d:t>
+					</d:sd>
+					<d:ov> B 13147 </d:ov>
+				</d:sz>
+			</d:reg>
+			<d:cin>
+				<d:pp>
+					<d:t> pronájem nemovitostí, bytů a nebytových prostor </d:t>
+					<d:t> opravy silničních vozidel </d:t>
+					<d:t> výroba, obchod a služby neuvedené v přílohách 1 až 3 živnostenského zákona </d:t>
+					<d:t> opravy ostatních dopravních prostředků a pracovních strojů </d:t>
+					<d:t> zámečnictví, nástrojářství </d:t>
+					<d:t> obráběčství </d:t>
+				</d:pp>
+			</d:cin>
+			<d:osk>
+				<d:t> Na základě smlouvy o sloučení převzala společnost Container Transport Systems, a.s., sídlem Poděbrady, Okřínek 53, PSČ 290 01, IČ: 282 07 505, jako nástupnická společnost, jmění, včetně práv a povinností z pracovněprávních vztahů, zanikající obchodní společnosti CTS - servis, spol. s r.o., sídlem Poděbrady, Okřínek, PSČ 290 01, IČ: 431 43 911. </d:t>
+			</d:osk>
+			<d:kap>
+				<d:za>
+					<d:vk>
+						<d:kc> 26000000.00 </d:kc>
+					</d:vk>
+					<d:spl>
+						<d:prc> 100 </d:prc>
+					</d:spl>
+				</d:za>
+				<d:akcie>
+					<d:em>
+						<d:da> Kmenové akcie na jméno </d:da>
+						<d:h> 26000.00 </d:h>
+						<d:pocet> 1000 </d:pocet>
+						<d:pd> v listinné podobě </d:pd>
+					</d:em>
+				</d:akcie>
+			</d:kap>
+			<d:sop>
+				<d:csp>
+					<d:c>
+						<d:kan> 29 </d:kan>
+						<d:f> člen představenstva </d:f>
+						<d:fo>
+							<d:tp> Ing. </d:tp>
+							<d:j> Andrea </d:j>
+							<d:p> Jiráková </d:p>
+							<d:dn> 1972-10-12 </d:dn>
+							<d:b>
+								<d:ida> 29945251 </d:ida>
+								<d:ks> 203 </d:ks>
+								<d:n> Kolín </d:n>
+								<d:nu> Chelčického </d:nu>
+								<d:cd> 747 </d:cd>
+								<d:tcd> 1 </d:tcd>
+								<d:psc> 28002 </d:psc>
+							</d:b>
+						</d:fo>
+						<d:vf>
+							<d:dza> 2011-06-01 </d:dza>
+						</d:vf>
+					</d:c>
+				</d:csp>
+				<d:csp>
+					<d:c>
+						<d:kan> 29 </d:kan>
+						<d:f> člen představenstva </d:f>
+						<d:fo>
+							<d:j> Jan </d:j>
+							<d:p> Outlý </d:p>
+							<d:dn> 1960-05-28 </d:dn>
+							<d:b>
+								<d:ida> 29945250 </d:ida>
+								<d:ks> 203 </d:ks>
+								<d:n> Libice nad Cidlinou </d:n>
+								<d:nu> Nerudova </d:nu>
+								<d:ca> 458 </d:ca>
+								<d:psc> 28907 </d:psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2009-06-19 </d:dza>
+						</d:cle>
+					</d:c>
+				</d:csp>
+				<d:csp>
+					<d:c>
+						<d:kan> 29 </d:kan>
+						<d:f> předseda představenstva </d:f>
+						<d:fo>
+							<d:tp> Ing. </d:tp>
+							<d:j> OTO </d:j>
+							<d:p> MARŠÁLEK </d:p>
+							<d:tz> CSc., MBA </d:tz>
+							<d:dn> 1951-03-25 </d:dn>
+							<d:b>
+								<d:ida> 29945254 </d:ida>
+								<d:ks> 203 </d:ks>
+								<d:n> Praha 3 </d:n>
+								<d:nco> Vinohrady </d:nco>
+								<d:nu> Lucemburská </d:nu>
+								<d:cd> 1591 </d:cd>
+								<d:tcd> 1 </d:tcd>
+								<d:co> 5 </d:co>
+								<d:psc> 13000 </d:psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2013-05-17 </d:dza>
+						</d:cle>
+						<d:vf>
+							<d:dza> 2013-05-17 </d:dza>
+						</d:vf>
+					</d:c>
+				</d:csp>
+				<d:csp>
+					<d:c>
+						<d:kan> 29 </d:kan>
+						<d:f> místopředseda představenstva </d:f>
+						<d:fo>
+							<d:j> JIŘÍ </d:j>
+							<d:p> CHARVÁT </d:p>
+							<d:dn> 1962-08-16 </d:dn>
+							<d:b>
+								<d:ida> 29945255 </d:ida>
+								<d:ks> 203 </d:ks>
+								<d:n> Lípa nad Orlicí </d:n>
+								<d:cd> 122 </d:cd>
+								<d:tcd> 1 </d:tcd>
+								<d:psc> 51721 </d:psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2013-05-17 </d:dza>
+						</d:cle>
+						<d:vf>
+							<d:dza> 2013-05-17 </d:dza>
+						</d:vf>
+					</d:c>
+				</d:csp>
+				<d:csp>
+					<d:c>
+						<d:kan> 29 </d:kan>
+						<d:f> člen představenstva </d:f>
+						<d:fo>
+							<d:j> ŠTĚPÁN </d:j>
+							<d:p> MEJSTŘÍK </d:p>
+							<d:dn> 1975-12-10 </d:dn>
+							<d:b>
+								<d:ida> 29945256 </d:ida>
+								<d:ks> 203 </d:ks>
+								<d:n> Kutná Hora </d:n>
+								<d:nco> Hlouška </d:nco>
+								<d:nu> Masarykova </d:nu>
+								<d:cd> 583 </d:cd>
+								<d:tcd> 1 </d:tcd>
+								<d:psc> 28401 </d:psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2013-05-17 </d:dza>
+						</d:cle>
+					</d:c>
+				</d:csp>
+				<d:t> Jménem společnosti jednají vždy dva členové představenstva společně. </d:t>
+			</d:sop>
+			<d:dr>
+				<d:cdr>
+					<d:c>
+						<d:kan> 4 </d:kan>
+						<d:f> člen dozorčí rady </d:f>
+						<d:fo>
+							<d:j> Jan </d:j>
+							<d:p> Loubek </d:p>
+							<d:dn> 1974-12-06 </d:dn>
+							<d:b>
+								<d:ida> 29945261 </d:ida>
+								<d:ks> 203 </d:ks>
+								<d:n> Choťánky </d:n>
+								<d:ca> 86 </d:ca>
+								<d:psc> 29001 </d:psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2009-05-29 </d:dza>
+						</d:cle>
+					</d:c>
+				</d:cdr>
+				<d:cdr>
+					<d:c>
+						<d:kan> 4 </d:kan>
+						<d:f> předseda dozorčí rady </d:f>
+						<d:fo>
+							<d:j> JIŘÍ </d:j>
+							<d:p> PATKA </d:p>
+							<d:dn> 1961-04-24 </d:dn>
+							<d:b>
+								<d:ida> 29945264 </d:ida>
+								<d:ks> 203 </d:ks>
+								<d:n> Semily </d:n>
+								<d:nco> Podmoklice </d:nco>
+								<d:nu> Bavlnářská </d:nu>
+								<d:cd> 521 </d:cd>
+								<d:tcd> 1 </d:tcd>
+								<d:psc> 51301 </d:psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2013-05-17 </d:dza>
+						</d:cle>
+						<d:vf>
+							<d:dza> 2013-05-17 </d:dza>
+						</d:vf>
+					</d:c>
+				</d:cdr>
+				<d:cdr>
+					<d:c>
+						<d:kan> 4 </d:kan>
+						<d:f> místopředseda dozorčí rady </d:f>
+						<d:fo>
+							<d:j> MILAN </d:j>
+							<d:p> NEPRÁŠEK </d:p>
+							<d:dn> 1973-01-02 </d:dn>
+							<d:b>
+								<d:ida> 29945265 </d:ida>
+								<d:ks> 203 </d:ks>
+								<d:n> Kutná Hora </d:n>
+								<d:nco> Žižkov </d:nco>
+								<d:nu> Sokolovská </d:nu>
+								<d:cd> 444 </d:cd>
+								<d:tcd> 1 </d:tcd>
+								<d:psc> 28401 </d:psc>
+							</d:b>
+						</d:fo>
+						<d:cle>
+							<d:dza> 2013-05-17 </d:dza>
+						</d:cle>
+						<d:vf>
+							<d:dza> 2013-05-17 </d:dza>
+						</d:vf>
+					</d:c>
+				</d:cdr>
+			</d:dr>
+			<d:aki>
+				<d:akr>
+					<d:kan> 5 </d:kan>
+					<d:po>
+						<d:ico> 27407667 </d:ico>
+						<d:of> CHARVÁT Group s.r.o. </d:of>
+						<d:si>
+							<d:ida> 29945268 </d:ida>
+							<d:ks> 203 </d:ks>
+							<d:n> Zbraslavice </d:n>
+							<d:psc> 28521 </d:psc>
+						</d:si>
+					</d:po>
+				</d:akr>
+			</d:aki>
+		</d:vypis_or>
+	</are:odpoved>
+</are:ares_odpovedi>
