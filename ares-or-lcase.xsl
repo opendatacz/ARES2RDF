@@ -465,7 +465,12 @@
 		<!-- Akcionář -->
 		<xsl:variable name="currentURI" select="f:getAkcionarstviURI($ico,.)"/>
 		<lodares:Akcionarstvi rdf:about="{$currentURI}">
-			<lodares:akcionar rdf:resource="{f:getPOURI(d:po)}"/>
+			<xsl:if test="d:po">
+				<lodares:akcionar rdf:resource="{f:getPOURI(d:po)}"/>
+			</xsl:if>
+			<xsl:if test="d:fo">
+				<lodares:akcionar rdf:resource="{f:getClenURI(.)}"/>
+			</xsl:if>
 			<xsl:if test="d:t">
 				<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(d:t/text())"/></dcterms:description>
 			</xsl:if>
