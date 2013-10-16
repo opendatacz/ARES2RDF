@@ -248,24 +248,23 @@
     </xsl:template>
     
 	<xsl:template match="d:vypis_or">
-		<xsl:apply-templates select="d:zau">
-			<xsl:with-param name="ico" select="normalize-space(d:zau/d:ico/text())"/>		
-		</xsl:apply-templates>
 		<xsl:apply-templates mode="linked">
 			<xsl:with-param name="ico" select="normalize-space(d:zau/d:ico/text())"/>		
 		</xsl:apply-templates>
 	</xsl:template>
 
-	<xsl:template match="d:zau">
+	<xsl:template match="d:zau" mode="linked">
 		<!-- Základní údaje -->
         <xsl:param name="ico"/>
         <gr:BusinessEntity rdf:about="{concat($beURIprefix, 'CZ', normalize-space($ico))}">
             <dcterms:valid rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:pod)"/></dcterms:valid>
             <rdf:type rdf:resource="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
-            <rov:registration rdf:resource="{f:icoBasedURI($ico,concat('identifier/',$ico))}"/>
+            <adms:identifier rdf:resource="{f:icoBasedURI($ico,concat('identifier/',$ico))}"/>
             <gr:legalName><xsl:value-of select="normalize-space(d:of)"/></gr:legalName>
             <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:dzor)"/></dcterms:issued>
-            <schema:address rdf:resource="{f:icoBasedURI($ico,'hq-address')}"/>
+			<xsl:apply-templates>
+				<xsl:with-param name="ico" select="$ico"/>
+			</xsl:apply-templates>
 			<xsl:apply-templates select="following-sibling::*">
 				<xsl:with-param name="ico" select="$ico"/>
 			</xsl:apply-templates>
@@ -405,7 +404,9 @@
 			<xsl:for-each select="d:csp">
 				<lodares:clen-predstavenstva rdf:resource="{f:getClenstviVPredstavenstvuURI($ico,d:c)}"/>
 			</xsl:for-each>
-			<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(d:t/text())"/></dcterms:description>
+			<xsl:for-each select="d:t">
+				<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></dcterms:description>
+			</xsl:for-each>
 		</lodares:Predstavenstvo>
 
 		<xsl:apply-templates mode="linked">
@@ -420,7 +421,9 @@
 			<xsl:for-each select="d:cso">
 				<lodares:clen-statutarniho-organu rdf:resource="{f:getClenstviVStatutarnimOrganuURI($ico,d:c)}"/>
 			</xsl:for-each>
-			<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(d:t/text())"/></dcterms:description>
+			<xsl:for-each select="d:t">
+				<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></dcterms:description>
+			</xsl:for-each>
 		</lodares:StatutarniOrgan>
 
 		<xsl:apply-templates mode="linked">
@@ -471,9 +474,9 @@
 			<xsl:if test="d:fo">
 				<lodares:akcionar rdf:resource="{f:getClenURI(.)}"/>
 			</xsl:if>
-			<xsl:if test="d:t">
-				<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(d:t/text())"/></dcterms:description>
-			</xsl:if>
+			<xsl:for-each select="d:t">
+				<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></dcterms:description>
+			</xsl:for-each>
 		</lodares:Akcionarstvi>
 
 		<xsl:apply-templates mode="linked">
@@ -494,7 +497,9 @@
 			<xsl:for-each select="d:cdr">
 				<lodares:clen-dozorci-rady rdf:resource="{f:getClenstviVDozorciRadeURI($ico,d:c)}"/>
 			</xsl:for-each>
-			<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(d:t/text())"/></dcterms:description>
+			<xsl:for-each select="d:t">
+				<dcterms:description xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></dcterms:description>
+			</xsl:for-each>
 		</lodares:DozorciRada>
 
 		<xsl:apply-templates mode="linked">
@@ -652,7 +657,7 @@
 		</xsl:apply-templates>
     </xsl:template>
 
-    <xsl:template mode="linked" match="d:b">
+    <xsl:template mode="linked" match="d:b[not(parent::d:zau)]">
 		<xsl:param name="ico"/>
 		<schema:PostalAddress rdf:about="{concat(f:getClenURI(../..),'/address')}">
 			<schema:streetAddress><xsl:value-of select="
@@ -790,26 +795,53 @@
 		<lodares:ostatni xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></lodares:ostatni>
     </xsl:template>
 
-    <xsl:template match="d:pfo">
+    <xsl:template match="d:pfo[d:pfo]">
         <!-- Právní forma -->
         <rov:orgType rdf:resource="{f:pathIdURI('concept-scheme/organization-types', normalize-space(d:kpf/text()))}"/>    
     </xsl:template>
-    
+
+    <xsl:template mode="linked" match="d:pfo[d:pfo]">
+        <!-- Právní forma -->
+        <xsl:variable name="schemePath">concept-scheme/organization-types</xsl:variable>
+        <skos:Concept rdf:about="{f:pathIdURI($schemePath, d:kpf/text())}">
+            <skos:inScheme rdf:resource="{f:pathURI($schemePath)}"/>
+            <skos:prefLabel xml:lang="cs"><xsl:value-of select="normalize-space(d:npf/text())"/></skos:prefLabel>
+			<skos:notation><xsl:value-of select="normalize-space(d:kpf/text())"/></skos:notation>
+        </skos:Concept>    
+    </xsl:template>
+
     <xsl:template match="d:psu">
         <!-- Interní příznaky subjektu -->
         <!-- Není blíže určeno ve XML schématu, hodnoty jako "NAAANNNNNNNNNNNNNNNNNNNNANNNNN" -->
     </xsl:template>
     
-    <xsl:template match="d:ror/d:sor/d:ssu">
+    <xsl:template match="d:s" mode="linked">
+        <xsl:param name="ico" tunnel="yes"/>
+        <xsl:apply-templates mode="linked">
+			<xsl:with-param name="ico" tunnel="yes"/>
+        </xsl:apply-templates>
+    </xsl:template>
+
+    <xsl:template match="d:s">
+        <xsl:param name="ico" tunnel="yes"/>
+        <xsl:apply-templates>
+			<xsl:with-param name="ico" tunnel="yes"/>
+        </xsl:apply-templates>
+    </xsl:template>
+
+    <xsl:template match="d:ssu">
         <!-- Stav subjektu -->
-        <rov:orgStatus>
-            <skos:Concept>
-                <skos:inScheme rdf:resource="{f:pathURI('concept-scheme/organization-statuses')}"/>
-                <skos:prefLabel xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></skos:prefLabel>
-            </skos:Concept>
-        </rov:orgStatus>
+        <rov:orgStatus rdf:resource="{f:pathIdURI('concept-scheme/organization-statuses', normalize-space(./text()))}"/>
     </xsl:template>
     
+    <xsl:template match="d:ssu" mode="linked">
+        <!-- Stav subjektu -->
+		<skos:Concept rdf:about="{f:pathIdURI('concept-scheme/organization-statuses', normalize-space(./text()))}">
+			<skos:inScheme rdf:resource="{f:pathURI('concept-scheme/organization-statuses')}"/>
+			<skos:prefLabel xml:lang="cs"><xsl:value-of select="normalize-space(./text())"/></skos:prefLabel>
+		</skos:Concept>
+    </xsl:template>
+
     <!-- Templates for linked resources -->
     
     <xsl:template mode="linked" match="d:t[parent::d:pp]">
@@ -820,6 +852,11 @@
             <skos:inScheme rdf:resource="{f:pathURI($schemePath)}"/>
             <skos:prefLabel><xsl:value-of select="normalize-space(./text())"/></skos:prefLabel>
         </skos:Concept>
+    </xsl:template>
+
+    <xsl:template match="d:si">
+        <xsl:param name="ico" tunnel="yes"/>
+        <schema:address rdf:resource="{f:icoBasedURI($ico,'hq-address')}"/>
     </xsl:template>
 
     <xsl:template mode="linked" match="d:si">
