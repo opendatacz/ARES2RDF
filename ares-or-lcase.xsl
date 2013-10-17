@@ -76,8 +76,8 @@
 		<xsl:param name="context" as="node()"/>
 		<xsl:if test="$context/d:fo">
 			<xsl:value-of select="f:pathIdURI(
-					concat('person/',
-					normalize-space($context/d:fo/d:dn/text())), 
+					concat('person',
+					if ($context/d:fo/d:dn) then concat('/',normalize-space($context/d:fo/d:dn/text())) else ''), 
 					f:getClenJmenoURIpart($context))"/>
 		</xsl:if>
 		<xsl:if test="$context/d:po">
@@ -384,27 +384,27 @@
 			<xsl:for-each select="d:akcie/d:em">
 				<lodares:Emise rdf:about="{f:icoBasedDomainURI($ico, concat('emise/',count(./preceding-sibling::*)+1))}">
 					<lodares:druh-akcie rdf:resource="{f:pathIdURI($druhAkcieScheme, normalize-space(d:da/text()))}"/>
-					<lodares:podoba-akcie rdf:resource="{f:pathIdURI($podobaAkcieScheme, normalize-space(d:pd/text()))}"/>
-					<lodares:hodnota-akcie rdf:resource="{f:icoBasedDomainURI($ico, concat('emise/',./position(),'/hodnota'))}"/>
+					<xsl:if test="d:pd"><lodares:podoba-akcie rdf:resource="{f:pathIdURI($podobaAkcieScheme, normalize-space(d:pd/text()))}"/></xsl:if>
+					<lodares:hodnota-akcie rdf:resource="{f:icoBasedDomainURI($ico, concat('emise/',count(./preceding-sibling::*)+1,'/hodnota'))}"/>
 					<lodares:pocet-akcii rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"><xsl:value-of select="normalize-space(d:pocet/text())"/></lodares:pocet-akcii>
 				</lodares:Emise>
 			</xsl:for-each>
         </xsl:if>
         <xsl:apply-templates mode="linked">
-			<xsl:with-param name="ico" tunnel="yes"/>
+			<xsl:with-param name="ico" select="$ico"/>
         </xsl:apply-templates>
 	</xsl:template>
 	
     <xsl:template mode="linked" match="d:akcie">
 		<xsl:param name="ico"/>
 		<xsl:for-each select="d:em">
-			<gr:PriceSpecification rdf:about="{f:icoBasedDomainURI($ico, concat('emise/',./position(),'/hodnota'))}">
+			<gr:PriceSpecification rdf:about="{f:icoBasedDomainURI($ico, concat('emise/',count(./preceding-sibling::*)+1,'/hodnota'))}">
 				<gr:hasCurrency>CZK</gr:hasCurrency>
 				<gr:hasCurrencyValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><xsl:value-of select="normalize-space(d:h/text())"/></gr:hasCurrencyValue>
 			</gr:PriceSpecification>
 		</xsl:for-each>
 		<xsl:apply-templates select="d:em/*" mode="linked">
-			<xsl:with-param name="ico" tunnel="yes"/>
+			<xsl:with-param name="ico" select="$ico"/>
 		</xsl:apply-templates>
     </xsl:template>
 
@@ -434,6 +434,7 @@
 		<xsl:param name="ico"/>
 		<!-- Statutární orgán - představenstvo -->
 		<lodares:Predstavenstvo rdf:about="{f:icoBasedDomainURI($ico, 'predstavenstvo')}">
+			<dcterms:title><xsl:value-of select="concat(normalize-space(../d:zau/d:of/text()),' - Představenstvo')"/></dcterms:title>
 			<xsl:for-each select="d:csp">
 				<lodares:clen-predstavenstva rdf:resource="{f:getClenstviVPredstavenstvuURI($ico,d:c)}"/>
 			</xsl:for-each>
@@ -451,6 +452,7 @@
 		<xsl:param name="ico"/>
 		<!-- Statutární orgán -->
 		<lodares:StatutarniOrgan rdf:about="{f:icoBasedDomainURI($ico, 'statutarni-organ')}">
+			<dcterms:title><xsl:value-of select="concat(normalize-space(../d:zau/d:of/text()),' - Statutární orgán')"/></dcterms:title>
 			<xsl:for-each select="d:cso">
 				<lodares:clen-statutarniho-organu rdf:resource="{f:getClenstviVStatutarnimOrganuURI($ico,d:c)}"/>
 			</xsl:for-each>
@@ -468,6 +470,7 @@
 		<xsl:param name="ico"/>
 		<!-- Akcionáři -->
 		<lodares:Akcionari rdf:about="{f:icoBasedDomainURI($ico, 'akcionari')}">
+			<dcterms:title><xsl:value-of select="concat(normalize-space(../d:zau/d:of/text()),' - Akcionáři')"/></dcterms:title>
 			<xsl:for-each select="d:akr">
 				<lodares:akcionarstvi rdf:resource="{f:getAkcionarstviURI($ico,.)}"/>
 			</xsl:for-each>
@@ -528,6 +531,7 @@
 		<xsl:param name="ico"/>
 		<!-- Dozorčí rada -->
 		<lodares:DozorciRada rdf:about="{f:icoBasedDomainURI($ico, 'dozorci-rada')}">
+		<dcterms:title><xsl:value-of select="concat(normalize-space(../d:zau/d:of/text()),' - Dozorčí rada')"/></dcterms:title>
 			<xsl:for-each select="d:cdr">
 				<lodares:clen-dozorci-rady rdf:resource="{f:getClenstviVDozorciRadeURI($ico,d:c)}"/>
 			</xsl:for-each>
@@ -545,6 +549,7 @@
 		<xsl:param name="ico"/>
 		<!-- Společníci s vkladem -->
 		<lodares:SpolecniciSVkladem rdf:about="{f:icoBasedDomainURI($ico, 'spolecnici-s-vkladem')}">
+		<dcterms:title><xsl:value-of select="concat(normalize-space(../d:zau/d:of/text()),' - Společníci s vkladem')"/></dcterms:title>
 			<xsl:for-each select="d:ss">
 				<lodares:spolecnictvi-s-vkladem rdf:resource="{f:getSpolecnictviSVklademURI($ico,.)}"/>
 			</xsl:for-each>
@@ -682,9 +687,10 @@
         <!-- Člen představenstva nebo dozorčí rady nebo prokurista nebo společník s vkladem-->
 		<xsl:param name="ico"/>
         <foaf:Person rdf:about="{f:getClenURI(..)}">
-			<foaf:familyName><xsl:value-of select="normalize-space(d:p/text())"/></foaf:familyName>
-			<foaf:givenName><xsl:value-of select="normalize-space(d:j/text())"/></foaf:givenName>
-			<foaf:dateOfBirth rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:dn/text())"/></foaf:dateOfBirth>
+			<xsl:if test="d:ot"><foaf:name><xsl:value-of select="normalize-space(d:ot/text())"/></foaf:name></xsl:if>
+			<xsl:if test="d:p"><foaf:familyName><xsl:value-of select="normalize-space(d:p/text())"/></foaf:familyName></xsl:if>
+			<xsl:if test="d:j"><foaf:givenName><xsl:value-of select="normalize-space(d:j/text())"/></foaf:givenName></xsl:if>
+			<xsl:if test="d:dn"><foaf:dateOfBirth rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:dn/text())"/></foaf:dateOfBirth></xsl:if>
 			<xsl:if test="d:tp">
 				<foaf:title><xsl:value-of select="normalize-space(d:tp/text())"/></foaf:title>
 			</xsl:if>
