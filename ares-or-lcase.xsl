@@ -382,7 +382,7 @@
         </xsl:if>
         <xsl:if test="d:akcie">
 			<xsl:for-each select="d:akcie/d:em">
-				<lodares:Emise rdf:about="{f:icoBasedDomainURI($ico, concat('emise/',./position()))}">
+				<lodares:Emise rdf:about="{f:icoBasedDomainURI($ico, concat('emise/',count(./preceding-sibling::*)+1))}">
 					<lodares:druh-akcie rdf:resource="{f:pathIdURI($druhAkcieScheme, normalize-space(d:da/text()))}"/>
 					<lodares:podoba-akcie rdf:resource="{f:pathIdURI($podobaAkcieScheme, normalize-space(d:pd/text()))}"/>
 					<lodares:hodnota-akcie rdf:resource="{f:icoBasedDomainURI($ico, concat('emise/',./position(),'/hodnota'))}"/>
