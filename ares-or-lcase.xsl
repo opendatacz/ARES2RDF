@@ -55,7 +55,10 @@
 										normalize-space($context/d:fo/d:p/text()),
 										'-', 
 										normalize-space($context/d:fo/d:j/text())
-									)
+									),
+								if ($context/d:fo/d:tz) then 
+									concat('-', normalize-space($context/d:fo/d:tz/text())) 
+								else ''
 								)
 							)
 						)
@@ -84,6 +87,36 @@
 		</xsl:if>
 	</xsl:function>
     
+	<xsl:function name="f:getClenTitle" as="xs:string">
+		<xsl:param name="context" as="node()"/>
+		<xsl:if test="$context/d:fo">
+			<xsl:value-of select="
+							concat(
+								if ($context/d:fo/d:tp) then 
+									concat(normalize-space($context/d:fo/d:tp/text()),' ') 
+								else '', 
+								if ($context/d:fo/d:ot) then 
+									normalize-space($context/d:fo/d:ot) 
+								else 
+									concat(
+										normalize-space($context/d:fo/d:p/text()),
+										' ', 
+										normalize-space($context/d:fo/d:j/text())
+									),
+								if ($context/d:fo/d:tz) then 
+									concat(normalize-space($context/d:fo/d:tz/text()),' ') 
+								else ''
+								)
+			"/>
+		</xsl:if>
+		<xsl:if test="$context/d:po/d:ico">
+			<xsl:value-of select="concat(normalize-space($context/d:po/d:ico/text()), ' - ', normalize-space($context/d:po/d:of/text()))"/>
+		</xsl:if>
+		<xsl:if test="$context/d:po and not ($context/d:po/d:ico)">
+			<xsl:value-of select="normalize-space($context/d:po/d:of/text())"/>
+		</xsl:if>
+	</xsl:function>
+
 	<xsl:function name="f:getClenstviVPredstavenstvuURI" as="xs:anyURI">
 		<xsl:param name="ico" as="xs:string"/>
 		<xsl:param name="context" as="node()"/>
@@ -329,7 +362,7 @@
         </xsl:if>
         <xsl:if test="d:akcie">
 			<xsl:for-each select="d:akcie/d:em">
-				<lodares:emise rdf:resource="{f:icoBasedDomainURI($ico, concat('emise/',./position()))}"/>
+				<lodares:emise rdf:resource="{f:icoBasedDomainURI($ico, concat('emise/',count(./preceding-sibling::*)+1))}"/>
 			</xsl:for-each>
         </xsl:if>
 	</xsl:template>
@@ -433,7 +466,7 @@
 
 	<xsl:template match="d:aki" mode="linked">
 		<xsl:param name="ico"/>
-		<!-- Statutární orgán -->
+		<!-- Akcionáři -->
 		<lodares:Akcionari rdf:about="{f:icoBasedDomainURI($ico, 'akcionari')}">
 			<xsl:for-each select="d:akr">
 				<lodares:akcionarstvi rdf:resource="{f:getAkcionarstviURI($ico,.)}"/>
@@ -468,6 +501,7 @@
 		<!-- Akcionář -->
 		<xsl:variable name="currentURI" select="f:getAkcionarstviURI($ico,.)"/>
 		<lodares:Akcionarstvi rdf:about="{$currentURI}">
+			<dcterms:title><xsl:value-of select="f:getClenTitle(.)"/></dcterms:title>
 			<xsl:if test="d:po">
 				<lodares:akcionar rdf:resource="{f:getPOURI(d:po)}"/>
 			</xsl:if>
@@ -526,6 +560,7 @@
 		<!-- Společnictví s vkladem -->
 		<xsl:variable name="currentURI" select="f:getSpolecnictviSVklademURI($ico,.)"/>
 		<lodares:SpolecnictviSVkladem rdf:about="{$currentURI}">
+			<dcterms:title><xsl:value-of select="f:getClenTitle(.)"/></dcterms:title>
 			<xsl:if test="d:fo">
 				<lodares:spolecnik-s-vkladem rdf:resource="{f:getClenURI(.)}"/>
 			</xsl:if>
@@ -565,6 +600,7 @@
 		<xsl:param name="ico"/>
 		<!-- Statutární orgán -->
 		<lodares:ClenstviVStatutarnimOrganu rdf:about="{f:getClenstviVStatutarnimOrganuURI($ico, d:c)}">
+			<dcterms:title><xsl:value-of select="f:getClenTitle(d:c)"/></dcterms:title>
 			<lodares:clen-predstavenstva rdf:resource="{f:getClenURI(d:c)}"/>
 			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:cle/d:dza/text())"/></dcterms:issued>
 			<lodares:zastavani-funkce-v-statutarnim-organu rdf:resource="{f:getZastavaniFunkceVStatutarnimOrganuURI($ico, d:c)}"/>
@@ -572,6 +608,7 @@
 		</lodares:ClenstviVStatutarnimOrganu>
 
 		<lodares:ZastavaniFunkceVStatutarnimOrganu rdf:about="{f:getZastavaniFunkceVStatutarnimOrganuURI($ico, d:c)}">
+			<dcterms:title><xsl:value-of select="normalize-space(d:c/d:f/text())"/></dcterms:title>
 			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:vf/d:dza/text())"/></dcterms:issued>
 			<lodares:funkce-v-statutarnim-organu rdf:resource="{f:pathIdURI($funkceVStatutarnimOrganuScheme, normalize-space(d:c/d:f/text()))}"/>
 		</lodares:ZastavaniFunkceVStatutarnimOrganu>
@@ -585,6 +622,7 @@
 		<xsl:param name="ico"/>
 		<!-- Statutární orgán - představenstvo -->
 		<lodares:ClenstviVPredstavenstvu rdf:about="{f:getClenstviVPredstavenstvuURI($ico, d:c)}">
+			<dcterms:title><xsl:value-of select="f:getClenTitle(d:c)"/></dcterms:title>
 			<lodares:clen-predstavenstva rdf:resource="{f:getClenURI(d:c)}"/>
 			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:cle/d:dza/text())"/></dcterms:issued>
 			<lodares:zastavani-funkce-v-predstavenstvu rdf:resource="{f:getZastavaniFunkceVPredstavenstvuURI($ico, d:c)}"/>
@@ -592,6 +630,7 @@
 		</lodares:ClenstviVPredstavenstvu>
 
 		<lodares:ZastavaniFunkceVPredstavenstvu rdf:about="{f:getZastavaniFunkceVPredstavenstvuURI($ico, d:c)}">
+			<dcterms:title><xsl:value-of select="normalize-space(d:c/d:f/text())"/></dcterms:title>
 			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:vf/d:dza/text())"/></dcterms:issued>
 			<lodares:funkce-v-predstavenstvu rdf:resource="{f:pathIdURI($funkceVPredstavenstvuScheme, normalize-space(d:c/d:f/text()))}"/>
 		</lodares:ZastavaniFunkceVPredstavenstvu>
@@ -605,6 +644,7 @@
 		<xsl:param name="ico"/>
 		<!-- Dozorčí rada -->
 		<lodares:ClenstviVDozorciRade rdf:about="{f:getClenstviVDozorciRadeURI($ico, d:c)}">
+			<dcterms:title><xsl:value-of select="f:getClenTitle(d:c)"/></dcterms:title>
 			<lodares:clen-predstavenstva rdf:resource="{f:getClenURI(d:c)}"/>
 			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:cle/d:dza/text())"/></dcterms:issued>
 			<lodares:zastavani-funkce-v-predstavenstvu rdf:resource="{f:getZastavaniFunkceVDozorciRadeURI($ico, d:c)}"/>
@@ -612,6 +652,7 @@
 		</lodares:ClenstviVDozorciRade>
 
 		<lodares:ZastavaniFunkceVDozorciRade rdf:about="{f:getZastavaniFunkceVDozorciRadeURI($ico, d:c)}">
+			<dcterms:title><xsl:value-of select="normalize-space(d:c/d:f/text())"/></dcterms:title>
 			<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"><xsl:value-of select="normalize-space(d:c/d:vf/d:dza/text())"/></dcterms:issued>
 			<lodares:funkce-v-predstavenstvu rdf:resource="{f:pathIdURI($funkceVDozorciRadeScheme, normalize-space(d:c/d:f/text()))}"/>
 		</lodares:ZastavaniFunkceVDozorciRade>
@@ -856,7 +897,7 @@
 
     <xsl:template match="d:si">
         <xsl:param name="ico" tunnel="yes"/>
-        <schema:address rdf:resource="{f:icoBasedURI($ico,'hq-address')}"/>
+        <schema:address rdf:resource="{concat(f:getPOURI(..),'/hq-address')}"/>
     </xsl:template>
 
     <xsl:template mode="linked" match="d:si">
