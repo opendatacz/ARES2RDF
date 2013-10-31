@@ -323,7 +323,7 @@
     
     <xsl:template mode="linked" match="D:T[parent::D:Obor_cinnosti]">
         <!-- Název oboru činnosti -->
-        <skos:prefLabel xml:lang="cs"><xsl:value-of select="."/></skos:prefLabel>
+        <skos:altLabel xml:lang="cs"><xsl:value-of select="."/></skos:altLabel>
     </xsl:template>
     
     <xsl:template mode="linked" match="D:PSC[parent::D:AA]|D:Zahr_PSC[parent::D:AA]">
