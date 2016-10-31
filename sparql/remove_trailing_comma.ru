@@ -18,7 +18,7 @@ WHERE {
   }
   GRAPH ?g {
     ?address schema:streetAddress ?_streetAddress .
-    FILTER STRENDS(?_streetAddress, ",")
+    FILTER (STRLEN(?_streetAddress) > 1 && STRENDS(?_streetAddress, ","))
     BIND (SUBSTR(?_streetAddress, 1, STRLEN(?_streetAddress) - 1) AS ?streetAddress)
   }
 }
