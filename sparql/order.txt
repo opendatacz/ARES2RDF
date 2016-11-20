@@ -32,3 +32,4 @@ delete_empty_cislo_orientacni_pismeno.ru
 delete_empty_street_address.ru
 delete_zero_cislo_orientacni.ru
 delete_street_address_same_as_house_number.ru
+remove_duplicate_street_address.ru
