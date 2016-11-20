@@ -15,6 +15,7 @@ expand_sidliste.ru
 expand_namesti.ru
 expand_kapitana.ru
 expand_ceskoslovenske.ru
+expand_trida.ru
 space_tgm.ru
 space_numbers.ru
 separate_roman_numerals_by_space.ru
