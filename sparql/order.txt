@@ -18,6 +18,7 @@ remove_leading_space.ru
 # expand_ceskoslovenske.ru
 # expand_trida.ru
 delete_leading_praha.ru
+numeric_address_locality_to_house_number.ru
 space_tgm.ru
 space_numbers.ru
 separate_roman_numerals_by_space.ru
