@@ -16,9 +16,11 @@ WHERE {
   }
   GRAPH ?g {
     ?address schema:streetAddress ?streetAddress .
-    FILTER NOT EXISTS {
-      ?address schema:addressCountry [] .
+    OPTIONAL {
+      ?address schema:addressCountry ?country .
     }
+    FILTER (!BOUND(?country) || ?country = "CZ")
+    
     FILTER REGEX(?streetAddress, "^\\d+\\/?\\d*[a-zA-Z]?$")
     BIND (REPLACE(?streetAddress, "^(\\d+)\\/?\\d*[a-zA-Z]?$", "$1") AS ?cp)
     BIND (REPLACE(?streetAddress, "^\\d+\\/?(\\d+)[a-zA-Z]?$", "$1") AS ?co)

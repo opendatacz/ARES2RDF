@@ -17,9 +17,11 @@ WHERE {
   } 
   GRAPH ?g {
     ?address schema:streetAddress ?_streetAddress .
-    FILTER NOT EXISTS {
-      ?address schema:addressCountry [] .
+    OPTIONAL {
+      ?address schema:addressCountry ?country .
     }
+    FILTER (!BOUND(?country) || ?country = "CZ")
+    
     # Switched order between číslo orientační and číslo popisné
     FILTER REGEX(?_streetAddress, "^.*\\s+\\d+[a-zA-Z]\\/\\d+$")
     BIND (REPLACE(?_streetAddress, "^(.*)\\s+\\d+[a-zA-Z]\\/\\d+$", "$1") AS ?streetAddress)
