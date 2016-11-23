@@ -1,0 +1,33 @@
+PREFIX ares:       <http://linked.opendata.cz/resource/dataset/ares/>
+PREFIX ruian-link: <http://ruian.linked.opendata.cz/ontology/links/>
+
+DELETE {
+  GRAPH ?g {
+    ?postalAddress ruian-link:adresni-misto ?_adresniMisto .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?postalAddress ruian-link:adresni-misto ?adresniMisto .
+  }
+}
+WHERE {
+  {
+    SELECT ?g ?postalAddress ?_adresniMisto
+    WHERE {
+      VALUES ?g {
+        ares:or
+        ares:rzp
+      }
+      GRAPH ?g {
+        ?postalAddress ruian-link:adresni-misto ?_adresniMisto .
+        FILTER STRSTARTS(STR(?_adresniMisto), "http://ruian.linked.opendata.cz/resource/adresni-mista/")
+      }
+    }
+    LIMIT {{limit}}
+  }
+  BIND (IRI(CONCAT("http://linked.opendata.cz/resource/cuzk.cz/postal-address/",
+                   STRAFTER(STR(?_adresniMisto),
+                            "http://ruian.linked.opendata.cz/resource/adresni-mista/")))
+        AS ?adresniMisto)
+}
