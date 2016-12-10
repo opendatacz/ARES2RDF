@@ -31,6 +31,7 @@ collapse_spaces.ru
 parse_addresses_1.ru
 parse_addresses_2.ru
 parse_addresses_3.ru
+parse_addresses_4.ru
 delete_empty_cislo_orientacni.ru
 delete_empty_cislo_orientacni_pismeno.ru
 delete_empty_street_address.ru
