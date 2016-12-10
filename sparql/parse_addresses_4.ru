@@ -20,10 +20,6 @@ WHERE {
   } 
   GRAPH ?g {
     ?address schema:streetAddress ?_streetAddress .
-    OPTIONAL {
-      ?address schema:addressCountry ?country .
-    }
-    FILTER (!BOUND(?country) || ?country = "CZ")
 
     FILTER REGEX(?_streetAddress, "\\s+\\d+$")
     BIND (REPLACE(?_streetAddress, "(\\s+\\d+)$", "") AS ?streetAddress)
