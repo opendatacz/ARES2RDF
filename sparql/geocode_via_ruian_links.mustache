@@ -1,0 +1,39 @@
+PREFIX ares:       <http://linked.opendata.cz/resource/dataset/ares/>
+PREFIX geo:        <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX ruian:      <http://ruian.linked.opendata.cz/ontology/>
+PREFIX ruian-link: <http://ruian.linked.opendata.cz/ontology/links/>
+PREFIX schema:     <http://schema.org/>
+
+INSERT {
+  GRAPH ares:or {
+    ?place schema:address ?postalAddress ;
+      schema:geo ?geo .
+    ?geo schema:longitude ?longitude ;
+      schema:latitude ?latitude .
+  }
+}
+WHERE {
+  {
+    SELECT ?g ?postalAddress ?adresniMisto
+    WHERE {
+      {
+        SELECT ?g ?postalAddress ?adresniMisto
+        WHERE {
+          GRAPH ares:or {
+            ?postalAddress a schema:PostalAddress ;
+              ruian-link:adresni-misto ?adresniMisto .
+          }
+        }
+        ORDER BY ?postalAddress
+      }
+    }
+    LIMIT {{limit}}
+    OFFSET {{offset}}
+  }
+  GRAPH <http://linked.opendata.cz/resource/cuzk.cz/czech-addresses> {
+    ?place schema:address ?adresniMisto ;
+      schema:geo ?geo .
+    ?geo schema:longitude ?longitude ;
+      schema:latitude ?latitude .
+  }
+}
