@@ -41,3 +41,4 @@ remove_duplicate_street_address.ru
 move_non_numeric_cislo_orientacni_to_pismeno.ru
 delete_empty_cislo_domovni.ru
 lowercase_orientational_number_letter.ru
+remove_street_address_duplicating_address_locality.ru
